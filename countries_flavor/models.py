@@ -10,12 +10,12 @@ class Country(models.Model):
         _('code ISO 3166-1 alpha-2'),
         max_length=2,
         primary_key=True,
-        validators=[RegexValidator(regex='^\w{2}$')])
+        validators=[RegexValidator(regex='^[A-Z]{2}$')])
 
     cca3 = models.CharField(
         _('code ISO 3166-1 alpha-3'),
         max_length=3,
-        validators=[RegexValidator(regex='^\w{3}$')])
+        validators=[RegexValidator(regex='^[A-Z]{3}$')])
 
     ccn3 = models.CharField(
         _('code ISO 3166-1 numeric'),
@@ -25,7 +25,7 @@ class Country(models.Model):
     cioc = models.CharField(
         _('code International Olympic Committee'),
         max_length=3,
-        validators=[RegexValidator(regex='^\w{3}$')])
+        validators=[RegexValidator(regex='^[A-Z]{3}$')])
 
     location = models.PointField()
     geo = models.MultiPolygonField(null=True)
