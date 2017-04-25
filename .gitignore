@@ -24,5 +24,4 @@ __pycache__
 .coverage
 coverage.xml
 
-.travis.yml
 tox.ini

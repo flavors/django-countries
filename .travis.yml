@@ -1,0 +1,31 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
+sudo: required
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y gdal-bin
+
+install:
+  - pip install tox tox-travis
+
+script:
+  - |
+    docker run
+      -p 5432:5432
+      -e DB_NAME=test
+      -e DB_USER=test
+      -e DB_PASSWORD=test
+      -d mongkok/postgres
+  - tox
+
+after_success:
+  - pip install codecov
+  - codecov -e TOXENV,DJANGO
