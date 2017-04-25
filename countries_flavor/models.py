@@ -100,7 +100,7 @@ class Currency(models.Model):
         _('code ISO 4217'),
         max_length=3,
         primary_key=True,
-        validators=[RegexValidator(regex='^\w{3}$')])
+        validators=[RegexValidator(regex='^[A-Z]{3}$')])
 
     symbol = models.CharField(_('symbol'), max_length=4)
 
@@ -118,7 +118,7 @@ class Language(models.Model):
         _('language code ISO 639-3'),
         max_length=3,
         primary_key=True,
-        validators=[RegexValidator(regex='^\w{3}$')])
+        validators=[RegexValidator(regex='^[a-z]{3}$')])
 
     class Meta:
         ordering = ('code',)
