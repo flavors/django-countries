@@ -1,3 +1,5 @@
+sudo: required
+
 language: python
 
 python:
@@ -6,8 +8,6 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
-
-sudo: required
 
 services:
   - docker
@@ -21,11 +21,11 @@ install:
 
 script:
   - |
-    docker run
-      -p 5432:5432
-      -e DB_NAME=test
-      -e DB_USER=test
-      -e DB_PASSWORD=test
+    docker run\
+      -p 5432:5432\
+      -e DB_NAME=test\
+      -e DB_USER=test\
+      -e DB_PASSWORD=test\
       -d mongkok/postgres
   - tox
 
