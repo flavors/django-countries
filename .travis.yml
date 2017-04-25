@@ -10,7 +10,7 @@ python:
   - "3.6"
 
 services:
-  - docker
+  - postgresql
 
 before_install:
   - sudo apt-get update -qq
@@ -19,14 +19,11 @@ before_install:
 install:
   - pip install tox tox-travis
 
+before_script:
+  - psql -U postgres -c 'create extension postgis'
+  - psql -U postgres -c 'create database test;'
+
 script:
-  - |
-    docker run\
-      -p 5432:5432\
-      -e DB_NAME=test\
-      -e DB_USER=test\
-      -e DB_PASSWORD=test\
-      -d mongkok/postgres
   - tox
 
 after_success:
