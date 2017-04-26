@@ -28,37 +28,7 @@ class Command(BaseCommand):
                 if country['cca2'] in country_codes]
 
         for data in countries:
-            area = data['area']
-            cca3 = data['cca3']
-
-            geometry = self.request("data/{cca3}.geo".format(
-                cca3=cca3.lower())
-            )['features'][0].get('geometry')
-
-            if geometry is not None:
-                geometry = geos.GEOSGeometry(json.dumps(geometry))
-
-                if isinstance(geometry, geos.Polygon):
-                    geometry = geos.MultiPolygon(geometry)
-
-            country, _ = models.Country.objects.update_or_create(
-                cca2=data['cca2'],
-                defaults={
-                    'cca3': cca3,
-                    'ccn3': data['ccn3'],
-                    'cioc': data['cioc'],
-                    'region': data['region'],
-                    'subregion': data['subregion'],
-                    'capital': data['capital'],
-                    'landlocked': data['landlocked'],
-                    'demonym': data['demonym'],
-                    'area': None if area < 0 else area,
-                    'location': geos.Point(data['latlng'][::-1]),
-                    'alt_spellings': data['altSpellings'],
-                    'calling_codes': data['callingCode'],
-                    'tlds': data['tld'],
-                    'geo': geometry
-                })
+            country, _ = self.update_or_create_country(data)
 
             self.add_currencies(country, data['currency'])
             self.add_languages(country, data['languages'])
@@ -81,6 +51,40 @@ class Command(BaseCommand):
             dataset_url=cls.DATASET_URL,
             path=path
         )).json()
+
+    @classmethod
+    def update_or_create_country(cls, data):
+        area = data['area']
+        cca3 = data['cca3']
+
+        geometry = cls.request("data/{cca3}.geo".format(
+            cca3=cca3.lower())
+        )['features'][0].get('geometry')
+
+        if geometry is not None:
+            geometry = geos.GEOSGeometry(json.dumps(geometry))
+
+            if isinstance(geometry, geos.Polygon):
+                geometry = geos.MultiPolygon(geometry)
+
+        return models.Country.objects.update_or_create(
+            cca2=data['cca2'],
+            defaults={
+                'cca3': cca3,
+                'ccn3': data['ccn3'],
+                'cioc': data['cioc'],
+                'region': data['region'],
+                'subregion': data['subregion'],
+                'capital': data['capital'],
+                'landlocked': data['landlocked'],
+                'demonym': data['demonym'],
+                'area': None if area < 0 else area,
+                'location': geos.Point(data['latlng'][::-1]),
+                'alt_spellings': data['altSpellings'],
+                'calling_codes': data['callingCode'],
+                'tlds': data['tld'],
+                'geo': geometry
+            })
 
     @classmethod
     def add_borders(cls, countries):
