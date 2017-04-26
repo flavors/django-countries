@@ -4,28 +4,30 @@ from django.contrib.postgres.fields import ArrayField
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 
+from . import fields
+
 
 class Country(models.Model):
-    cca2 = models.CharField(
+    cca2 = fields.CodeISOField(
         _('code ISO 3166-1 alpha-2'),
-        max_length=2,
+        length=2,
         primary_key=True,
-        validators=[RegexValidator(regex='^[A-Z]{2}$')])
+        regex=r'[A-Z]')
 
-    cca3 = models.CharField(
+    cca3 = fields.CodeISOField(
         _('code ISO 3166-1 alpha-3'),
-        max_length=3,
-        validators=[RegexValidator(regex='^[A-Z]{3}$')])
+        length=3,
+        regex=r'[A-Z]')
 
-    ccn3 = models.CharField(
+    ccn3 = fields.CodeISOField(
         _('code ISO 3166-1 numeric'),
-        max_length=3,
-        validators=[RegexValidator(regex='^\d{3}$')])
+        length=3,
+        regex=r'\d')
 
-    cioc = models.CharField(
+    cioc = fields.CodeISOField(
         _('code International Olympic Committee'),
-        max_length=3,
-        validators=[RegexValidator(regex='^[A-Z]{3}$')])
+        length=3,
+        regex=r'[A-Z]')
 
     location = models.PointField()
     geo = models.MultiPolygonField(null=True)
@@ -96,11 +98,11 @@ class Translation(models.Model):
 
 
 class Currency(models.Model):
-    code = models.CharField(
+    code = fields.CodeISOField(
         _('code ISO 4217'),
-        max_length=3,
+        length=3,
         primary_key=True,
-        validators=[RegexValidator(regex='^[A-Z]{3}$')])
+        regex=r'[A-Z]')
 
     symbol = models.CharField(_('symbol'), max_length=4)
 
@@ -114,11 +116,11 @@ class Currency(models.Model):
 
 class Language(models.Model):
     name = models.CharField(_('name'), max_length=64)
-    code = models.CharField(
+    code = fields.CodeISOField(
         _('language code ISO 639-3'),
-        max_length=3,
+        length=3,
         primary_key=True,
-        validators=[RegexValidator(regex='^[a-z]{3}$')])
+        regex=r'[a-z]')
 
     class Meta:
         ordering = ('code',)
