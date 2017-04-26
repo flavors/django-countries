@@ -27,7 +27,10 @@ setup(
     maintainer='mongkok',
     url='https://github.com/flavors/countries/',
     packages=find_packages(exclude=['tests*']),
-    install_requires=['Django>=1.8'],
+    install_requires=[
+        'Django>=1.8',
+        'requests>=1.1.0'
+    ],
     classifiers=[
         'Development Status :: 1 - Planning',
         'Environment :: Web Environment',
@@ -43,7 +46,10 @@ setup(
         'Framework :: Django',
     ],
     zip_safe=False,
-    tests_require=['Django>=1.8'],
+    tests_require=[
+        'Django>=1.8',
+        'requests>=1.1.0'
+    ],
     package_data={
         'countries_flavor': [
             'locale/*/LC_MESSAGES/django.po',
