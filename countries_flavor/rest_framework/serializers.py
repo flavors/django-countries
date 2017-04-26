@@ -30,6 +30,7 @@ class ListCountrySerializer(serializers.GeoFeatureModelSerializer):
 
     class Meta:
         model = models.Country
+        id_field = False
         exclude = ('geo',)
         geo_field = 'location'
 
@@ -38,5 +39,6 @@ class DetailCountrySerializer(ListCountrySerializer):
 
     class Meta:
         model = models.Country
+        id_field = False
         fields = '__all__'
         geo_field = 'geo'
