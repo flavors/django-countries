@@ -12,8 +12,20 @@ class Command(BaseCommand):
 
     help = 'Set up :)'
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--countries', '-c',
+            dest='countries',
+            help='Comma separated country list ISO 3166-1 alpha-2')
+
     def handle(self, **options):
         countries = self.request('dist/countries')
+        country_codes = options['countries'].split(',')
+
+        if country_codes:
+            countries = [
+                country for country in countries
+                if country['cca2'] in country_codes]
 
         for data in countries:
             area = data['area']
@@ -48,45 +60,20 @@ class Command(BaseCommand):
                     'geo': geometry
                 })
 
-            for language_code, name in data['languages'].items():
-                language, _ = models.Language.objects.update_or_create(
-                    code=language_code,
-                    defaults={'name': name})
-
-                country.languages.add(language)
+            self.add_currencies(country, data['currency'])
+            self.add_languages(country, data['languages'])
 
             translations = data['translations']
             translations.update(data['name'].pop('native'))
             translations.update({'eng': data['name']})
 
-            for language_code, name in translations.items():
-                language, _ = models.Language.objects\
-                    .get_or_create(code=language_code)
-
-                models.CountryName.objects.update_or_create(
-                    country=country,
-                    language=language,
-                    defaults={
-                        'common': name['common'],
-                        'official': name['official']
-                    })
-
-            for currency_code in data['currency']:
-                currency, _ = models.Currency.objects\
-                    .get_or_create(code=currency_code)
-
-                country.currencies.add(currency)
+            self.add_translations(country, translations)
 
             self.stdout.write('.', ending='')
             self.stdout.flush()
 
-        for data in countries:
-            country = models.Country.objects.get(cca2=data['cca2'])
-
-            for border in data['borders']:
-                country.borders.add(models.Country.objects.get(cca3=border))
-
-        self.stdout.write(self.style.SUCCESS('SUCCESS!!'))
+        self.add_borders(countries)
+        self.stdout.write(self.style.SUCCESS(' SUCCESS!!'))
 
     @classmethod
     def request(cls, path):
@@ -94,3 +81,42 @@ class Command(BaseCommand):
             dataset_url=cls.DATASET_URL,
             path=path
         )).json()
+
+    @classmethod
+    def add_borders(cls, countries):
+        for data in countries:
+            country = models.Country.objects.get(cca2=data['cca2'])
+
+            for border in data['borders']:
+                country.borders.add(models.Country.objects.get(cca3=border))
+
+    @classmethod
+    def add_currencies(cls, country, currencies):
+        for currency_code in currencies:
+            currency, _ = models.Currency.objects\
+                .get_or_create(code=currency_code)
+
+            country.currencies.add(currency)
+
+    @classmethod
+    def add_languages(cls, country, languages):
+        for language_code, name in languages.items():
+            language, _ = models.Language.objects.update_or_create(
+                code=language_code,
+                defaults={'name': name})
+
+            country.languages.add(language)
+
+    @classmethod
+    def add_translations(cls, country, translations):
+        for language_code, name in translations.items():
+            language, _ = models.Language.objects\
+                .get_or_create(code=language_code)
+
+            models.Translation.objects.update_or_create(
+                country=country,
+                language=language,
+                defaults={
+                    'common': name['common'],
+                    'official': name['official']
+                })
