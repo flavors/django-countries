@@ -11,8 +11,11 @@ from django.test.runner import DiscoverRunner
 
 DEFAULT_SETTINGS = dict(
     INSTALLED_APPS=(
+        'django_filters',
+        'rest_framework',
+        'rest_framework_gis',
         'countries_flavor.apps.CountriesAppConfig',
-        'tests',
+        'tests'
     ),
     DATABASES={
         'default': {
@@ -21,6 +24,15 @@ DEFAULT_SETTINGS = dict(
             'USER': os.environ['DB_USER'],
             'PASSWORD': os.environ['DB_PASSWORD']
         }
+    },
+    ROOT_URLCONF='tests.urls',
+    REST_FRAMEWORK={
+        'DEFAULT_FILTER_BACKENDS': (
+            'rest_framework_filters.backends.DjangoFilterBackend',
+            'rest_framework.filters.OrderingFilter',
+            'rest_framework.filters.SearchFilter'
+        ),
+        'TEST_REQUEST_DEFAULT_FORMAT': 'json'
     }
 )
 
