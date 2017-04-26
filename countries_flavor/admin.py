@@ -14,13 +14,6 @@ class CountryAdmin(admin.OSMGeoAdmin):
         'cca2', 'cca3', 'ccn3', 'cioc', 'region', 'subregion', 'capital')
 
 
-@admin.register(models.Translation)
-class TranslationAdmin(admin.ModelAdmin):
-    list_display = ('country',  'language', 'common', 'official')
-    list_filter = ('language',)
-    search_fields = ('common', 'official')
-
-
 @admin.register(models.Currency)
 class CurrencyAdmin(admin.ModelAdmin):
     list_display = ('code',  'symbol')
@@ -31,3 +24,10 @@ class CurrencyAdmin(admin.ModelAdmin):
 class LanguageAdmin(admin.ModelAdmin):
     list_display = ('code',  'name')
     search_fields = list_display
+
+
+@admin.register(models.Translation)
+class TranslationAdmin(admin.ModelAdmin):
+    list_display = ('country',  'language', 'common', 'official')
+    list_filter = ('language',)
+    search_fields = ('common', 'official')
