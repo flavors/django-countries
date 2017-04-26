@@ -46,7 +46,7 @@ class Country(models.Model):
     calling_codes = ArrayField(
         models.CharField(
             max_length=8,
-            validators=[RegexValidator(regex='^\d+$')]),
+            validators=[RegexValidator(regex=r'^\d+$')]),
         verbose_name=_('calling codes'))
 
     tlds = ArrayField(
