@@ -6,4 +6,4 @@ Change Log
 
 * xin chào!
 
-.. _0.0.1: https://github.com/flavor/countries/tree/v0.0.1
+.. _0.0.1: https://github.com/flavors/countries/tree/v0.0.1

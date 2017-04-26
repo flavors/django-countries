@@ -11,7 +11,7 @@ from django.test.runner import DiscoverRunner
 
 DEFAULT_SETTINGS = dict(
     INSTALLED_APPS=(
-        'countries_flavor.CountriesAppConfig',
+        'countries_flavor.apps.CountriesAppConfig',
         'tests',
     ),
     DATABASES={
