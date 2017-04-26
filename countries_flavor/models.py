@@ -78,7 +78,8 @@ class Translation(models.Model):
     country = models.ForeignKey(
         'Country',
         on_delete=models.CASCADE,
-        verbose_name=_('country'))
+        verbose_name=_('country'),
+        related_name='translations')
 
     language = models.ForeignKey(
         'Language',
