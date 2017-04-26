@@ -11,6 +11,7 @@ from django.test.runner import DiscoverRunner
 
 DEFAULT_SETTINGS = dict(
     INSTALLED_APPS=(
+        'django.contrib.auth',
         'django.contrib.contenttypes',
         'django_filters',
         'rest_framework',
