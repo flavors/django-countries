@@ -13,6 +13,10 @@ addons:
     packages:
       - postgresql-9.6-postgis-2.3
 
+  code_climate:
+    repo_token:
+      secure: 'd4yq1CoOwBTBN8/OFXDVR7aF3cfCC9VfL6nSwpiCykLlYK41aTy7+Rqr1WPszR6o7zU9hB3znDAIZ/EJ2Q65FWmyeuSlyfQ38a9vwglITSxOQ2jduT2GlUpW3P6OKti0zPOT3sgJM'
+
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y gdal-bin
