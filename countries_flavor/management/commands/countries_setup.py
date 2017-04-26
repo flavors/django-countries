@@ -16,7 +16,7 @@ class Command(BaseCommand):
         parser.add_argument(
             '--countries', '-c',
             dest='countries',
-            help='Comma separated country list ISO 3166-1 alpha-2')
+            help='Comma separated country list using ISO 3166-1 alpha-2')
 
     def handle(self, **options):
         countries = self.request('dist/countries')
