@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CountriesConfig(AppConfig):
+class CountriesAppConfig(AppConfig):
     name = 'countries_flavor'
     verbose_name = 'Countries'
