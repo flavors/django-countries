@@ -5,7 +5,6 @@
 *.box
 *.cer
 *.log
-*.mo
 *.pem
 *.p12
 *.pyc
