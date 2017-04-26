@@ -72,7 +72,7 @@ class Country(models.Model):
         return self.cca2
 
 
-class CountryName(models.Model):
+class Translation(models.Model):
     country = models.ForeignKey(
         'Country',
         on_delete=models.CASCADE,
