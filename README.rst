@@ -24,7 +24,7 @@ Add 'countries_flavor' to your INSTALLED_APPS setting.
 
     INSTALLED_APPS = (
         ...
-        'countries_flavor',
+        'countries_flavor.apps.CountriesAppConfig',
     )
 
 
