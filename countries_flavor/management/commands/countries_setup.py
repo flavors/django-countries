@@ -87,8 +87,12 @@ class Command(BaseCommand):
         for data in countries:
             country = models.Country.objects.get(cca2=data['cca2'])
 
-            for border in data['borders']:
-                country.borders.add(models.Country.objects.get(cca3=border))
+            for cca3 in data['borders']:
+                try:
+                    country_border = models.Country.objects.get(cca3=cca3)
+                except models.Country.DoesNotExist:
+                    continue
+                country.borders.add(country_border)
 
     @classmethod
     def add_currencies(cls, country, currencies):
