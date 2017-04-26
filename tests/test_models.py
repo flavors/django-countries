@@ -1,14 +1,10 @@
-import random
 import string
 
 from django.contrib.gis import geos
 from django.test import TestCase
 
 from countries_flavor import models
-
-
-def random_code(choices, length):
-    return ''.join(random.choice(choices) for i in range(length))
+from .helpers import random_code
 
 
 class ModelsTests(TestCase):
