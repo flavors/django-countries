@@ -3,8 +3,10 @@
 import os
 import sys
 
-from django.conf import settings
 import django
+
+from django.conf import settings
+from django.test.runner import DiscoverRunner
 
 
 DEFAULT_SETTINGS = dict(
@@ -32,15 +34,11 @@ def runtests():
     parent = os.path.dirname(os.path.abspath(__file__))
     sys.path.insert(0, parent)
 
-    from django.test.runner import DiscoverRunner
-    runner_class = DiscoverRunner
-    test_args = ['tests']
-
-    failures = runner_class(
+    failures = DiscoverRunner(
         verbosity=1,
         interactive=True,
         failfast=False)\
-        .run_tests(test_args)
+        .run_tests(['tests'])
 
     sys.exit(failures)
 
