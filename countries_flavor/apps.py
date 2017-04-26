@@ -1,0 +1,6 @@
+from django.apps import AppConfig
+
+
+class CountriesConfig(AppConfig):
+    name = 'countries_flavor'
+    verbose_name = 'Countries'
