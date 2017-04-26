@@ -29,6 +29,7 @@ setup(
     packages=find_packages(exclude=['tests*']),
     install_requires=[
         'Django>=1.9',
+        'psycopg2>=2.6.2',
         'requests>=1.1.0'
     ],
     classifiers=[
@@ -48,6 +49,7 @@ setup(
     zip_safe=False,
     tests_require=[
         'Django>=1.9',
+        'psycopg2>=2.6.2',
         'requests>=1.1.0'
     ],
     package_data={
