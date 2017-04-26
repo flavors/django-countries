@@ -1,11 +1,11 @@
 import string
 
 from django.contrib.gis import geos
-from django.urls import reverse
-
 from rest_framework.test import APITestCase
 
 from countries_flavor import models
+
+from .compat import reverse
 from .helpers import random_code
 
 
@@ -28,8 +28,9 @@ class RestFrameworkTests(APITestCase):
             'cca2': self.country.cca2
         })
 
-        self.assertEqual(len(response.data), 1)
-        self.assertEqual(response.data[0]['cca2'], self.country.cca2)
+        features = response.data['features']
+        self.assertEqual(len(features), 1)
+        self.assertEqual(features[0]['properties']['cca2'], self.country.cca2)
 
     def test_country_detail(self):
         response = self.client.get(reverse(
@@ -37,4 +38,6 @@ class RestFrameworkTests(APITestCase):
                 'pk': self.country.cca2
             }))
 
-        self.assertEqual(response.data['cca2'], self.country.cca2)
+        self.assertEqual(
+            response.data['properties']['cca2'],
+            self.country.cca2)
