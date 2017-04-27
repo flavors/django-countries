@@ -14,11 +14,12 @@
 
 __pycache__
 
-/build/
-/dist/
+/build
+/dist
 /.tox
 /*.egg*
 
-.cache
-.coverage
-coverage.xml
+/.pypirc
+/.cache
+/.coverage
+/coverage.xml
