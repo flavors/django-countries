@@ -1,0 +1,1348 @@
+---
+- model: countries_flavor.currency
+  pk: AED
+  fields:
+    name: Dirhams
+    full_name: "United Arab Emirates Dirhams"
+
+- model: countries_flavor.currency
+  pk: AFN
+  fields:
+    name: Afghanis
+    full_name: "Afghan Afghanis"
+    symbol: ؋
+    unicode_hex:
+      - 1547
+
+- model: countries_flavor.currency
+  pk: ALL
+  fields:
+    name: Leke
+    full_name: "Albanian Lek"
+    symbol: LEK
+    unicode_hex:
+      - 76
+      - 101
+      - 107
+
+- model: countries_flavor.currency
+  pk: AMD
+  fields:
+    name: Drams
+    full_name: "Armenian Drams"
+
+- model: countries_flavor.currency
+  pk: ANG
+  fields:
+    name: Guilders
+    full_name: "Netherlands Antillean Guilders"
+    symbol: ƒ
+    unicode_hex:
+      - 402
+
+- model: countries_flavor.currency
+  pk: AOA
+  fields:
+    name: Kwanza
+    symbol: Kz
+    full_name: "Angolan Kwanza"
+
+- model: countries_flavor.currency
+  pk: ARS
+  fields:
+    name: Pesos
+    full_name: "Argentine Pesos"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: AUD
+  fields:
+    name: Dollars
+    full_name: "Australian Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: AWG
+  fields:
+    name: Guilders
+    full_name: "Aruban Guilders"
+    symbol: ƒ
+    unicode_hex:
+      - 402
+
+- model: countries_flavor.currency
+  pk: AZN
+  fields:
+    name: "New Manats"
+    full_name: "Azerbaijan New Manats"
+    symbol: ман
+    unicode_hex:
+      - 1084
+      - 1072
+      - 1085
+
+- model: countries_flavor.currency
+  pk: BAM
+  fields:
+    name: "Convertible Marka"
+    full_name: "Convertible Marka"
+    symbol: KM
+    unicode_hex:
+      - 75
+      - 77
+
+- model: countries_flavor.currency
+  pk: BBD
+  fields:
+    name: Dollars
+    full_name: "Barbados Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: BDT
+  fields:
+    name: Taka
+    full_name: "Bangladeshi Taka"
+
+- model: countries_flavor.currency
+  pk: BGN
+  fields:
+    name: Leva
+    full_name: "Bulgarian Leva"
+    symbol: лв
+    unicode_hex:
+      - 82
+      - 1074
+
+- model: countries_flavor.currency
+  pk: BHD
+  fields:
+    name: Dinars
+    full_name: "Bahraini Dinars"
+
+- model: countries_flavor.currency
+  pk: BIF
+  fields:
+    name: Francs
+    full_name: "Burundi Francs"
+
+- model: countries_flavor.currency
+  pk: BMD
+  fields:
+    name: Dollars
+    full_name: "Bermudian Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: BND
+  fields:
+    name: Dollars
+    full_name: "Brunei Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: BOB
+  fields:
+    name: Bolivianos
+    full_name: "Bolivianos"
+    symbol: $b
+    unicode_hex:
+      - 36
+      - 98
+
+- model: countries_flavor.currency
+  pk: BRL
+  fields:
+    name: Real
+    full_name: "Brazilian Real"
+    symbol: R$
+    unicode_hex:
+      - 82
+      - 36
+
+- model: countries_flavor.currency
+  pk: BSD
+  fields:
+    name: Dollars
+    full_name: "Bahamian Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: BTN
+  fields:
+    name: Ngultrum
+    full_name: "Bhutan Ngultrum"
+
+- model: countries_flavor.currency
+  pk: BWP
+  fields:
+    name: Pulas
+    full_name: "Botswana Pulas"
+    symbol: P
+    unicode_hex:
+      - 80
+
+- model: countries_flavor.currency
+  pk: BYR
+  fields:
+    name: Rubles
+    full_name: "Belarussian Rubles"
+    symbol: p.
+    unicode_hex:
+      - 112
+      - 46
+
+- model: countries_flavor.currency
+  pk: BZD
+  fields:
+    name: Dollars
+    full_name: "Belize Dollars"
+    symbol: BZ$
+    unicode_hex:
+      - 66
+      - 90
+      - 36
+
+- model: countries_flavor.currency
+  pk: CAD
+  fields:
+    name: Dollars
+    full_name: "Canadian Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: CDF
+  fields:
+    name: Franc
+    full_name: "Franc"
+
+- model: countries_flavor.currency
+  pk: CHF
+  fields:
+    name: "Switzerland Francs"
+    full_name: "Switzerland Francs"
+    symbol: CHF
+    unicode_hex:
+      - 67
+      - 72
+      - 70
+
+- model: countries_flavor.currency
+  pk: CLP
+  fields:
+    name: Pesos
+    full_name: "Chilean Pesos"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: CNY
+  fields:
+    name: "Yuan Renminbi"
+    full_name: "Yuan Renminbi"
+    symbol: ¥
+    unicode_hex:
+      - 165
+
+- model: countries_flavor.currency
+  pk: COP
+  fields:
+    name: Pesos
+    full_name: "Colombian Pesos"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: CRC
+  fields:
+    name: Colones
+    full_name: "Costa Rican Colones"
+    symbol: ₡
+    unicode_hex:
+      - 8353
+
+- model: countries_flavor.currency
+  pk: CUP
+  fields:
+    name: Pesos
+    full_name: "Cuban Pesos"
+    symbol: ₱
+    unicode_hex:
+      - 8369
+
+- model: countries_flavor.currency
+  pk: CVE
+  fields:
+    name: Escudos
+    full_name: "Cape Verde Escudos"
+
+- model: countries_flavor.currency
+  pk: CZK
+  fields:
+    name: Koruny
+    full_name: "Czech Koruny"
+    symbol: Kč
+    unicode_hex:
+      - 75
+      - 269
+
+- model: countries_flavor.currency
+  pk: DJF
+  fields:
+    name: Francs
+    full_name: "Djibouti Francs"
+
+- model: countries_flavor.currency
+  pk: DKK
+  fields:
+    name: Kroner
+    full_name: "Danish Kroner"
+    symbol: kr
+    unicode_hex:
+      - 107
+      - 114
+
+- model: countries_flavor.currency
+  pk: DOP
+  fields:
+    name: Pesos
+    full_name: "Dominican Pesos"
+    symbol: RD$
+    unicode_hex:
+      - 82
+      - 68
+      - 36
+
+- model: countries_flavor.currency
+  pk: DZD
+  fields:
+    name: Dinars
+    full_name: "Algerian Dinar"
+
+- model: countries_flavor.currency
+  pk: ECS
+  fields:
+    name: Sucre
+    full_name: "Ecuador Sucre"
+
+- model: countries_flavor.currency
+  pk: EEK
+  fields:
+    name: Krooni
+    full_name: "Krooni"
+    symbol: kr
+    unicode_hex:
+      - 107
+      - 114
+
+- model: countries_flavor.currency
+  pk: EGP
+  fields:
+    name: Pounds
+    full_name: "Egyptian Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: ETB
+  fields:
+    name: "Ethopia Birr"
+    full_name: "Ethopia Birr"
+
+- model: countries_flavor.currency
+  pk: EUR
+  fields:
+    name: Euro
+    full_name: "Euro"
+    symbol: €
+    unicode_hex:
+      - 8364
+
+- model: countries_flavor.currency
+  pk: FJD
+  fields:
+    name: Dollar
+    full_name: "Fiji Dollar"
+
+- model: countries_flavor.currency
+  pk: FKP
+  fields:
+    name: Pounds
+    full_name: "Falkland Islands Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: GBP
+  fields:
+    name: Pounds
+    full_name: "Pound Sterling"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: GEL
+  fields:
+    name: Lari
+    full_name: "Lari"
+
+- model: countries_flavor.currency
+  pk: GGP
+  fields:
+    name: Pounds
+    full_name: "Pound Sterling"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: GHS
+  fields:
+    name: Cedis
+    full_name: "Ghanaian Cedis"
+    symbol: ¢
+    unicode_hex:
+      - 162
+
+- model: countries_flavor.currency
+  pk: GIP
+  fields:
+    name: Pounds
+    full_name: "Gibraltar Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: GMD
+  fields:
+    name: Lari
+    full_name: "Gambian Dalasi"
+
+- model: countries_flavor.currency
+  pk: GNF
+  fields:
+    name: Francs
+    full_name: "Guinea Francs"
+
+- model: countries_flavor.currency
+  pk: GTQ
+  fields:
+    name: Quetzales
+    full_name: "Quetzales"
+    symbol: Q
+    unicode_hex:
+      - 81
+
+- model: countries_flavor.currency
+  pk: GYD
+  fields:
+    name: Dollars
+    full_name: "Guyana Dollars"
+
+- model: countries_flavor.currency
+  pk: HKD
+  fields:
+    name: Dollars
+    full_name: "Hong Kong Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: HNL
+  fields:
+    name: Lempiras
+    full_name: "Honduaran Lempiras"
+    symbol: L
+    unicode_hex:
+      - 76
+
+- model: countries_flavor.currency
+  pk: HRK
+  fields:
+    name: Kuna
+    full_name: "Croatian Kuna"
+    symbol: kn
+    unicode_hex:
+      - 107
+      - 110
+
+- model: countries_flavor.currency
+  pk: HTG
+  fields:
+    name: "Haitian Gourde"
+    full_name: "Haitian Gourde"
+
+- model: countries_flavor.currency
+  pk: HUF
+  fields:
+    name: Forint
+    full_name: "Hungarian Forint"
+    symbol: Ft
+    unicode_hex:
+      - 70
+      - 116
+
+- model: countries_flavor.currency
+  pk: IDR
+  fields:
+    name: "Indonesian Rupiahs"
+    full_name: "Indonesian Rupiahs"
+    symbol: Rp
+    unicode_hex:
+      - 82
+      - 112
+
+- model: countries_flavor.currency
+  pk: ILS
+  fields:
+    name: "New Shekels"
+    full_name: "New Shekels"
+    symbol: ₪
+    unicode_hex:
+      - 8362
+
+- model: countries_flavor.currency
+  pk: IMP
+  fields:
+    name: Pounds
+    full_name: "Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: INR
+  fields:
+    name: Rupees
+    full_name: "Indian Rupees"
+    symbol: ₨
+    unicode_hex:
+      - 8360
+
+- model: countries_flavor.currency
+  pk: IQD
+  fields:
+    name: Dinars
+    full_name: "Iraqi Dinars"
+
+- model: countries_flavor.currency
+  pk: IRR
+  fields:
+    name: Riais
+    full_name: "Iranian Riais"
+    symbol: ﷼
+    unicode_hex:
+      - 65020
+
+- model: countries_flavor.currency
+  pk: ISK
+  fields:
+    name: Kronur
+    full_name: "Iceland Kronur"
+    symbol: kr
+    unicode_hex:
+      - 107
+      - 114
+
+- model: countries_flavor.currency
+  pk: JEP
+  fields:
+    name: Pounds
+    full_name: "Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: JMD
+  fields:
+    name: Dollars
+    full_name: "Jamaican Dollars"
+
+- model: countries_flavor.currency
+  pk: JOD
+  fields:
+    name: Dinars
+    full_name: "Jordanian Dinar"
+
+- model: countries_flavor.currency
+  pk: JPY
+  fields:
+    name: Yen
+    full_name: "Japanese Yen"
+    symbol: ¥
+    unicode_hex:
+      - 165
+
+- model: countries_flavor.currency
+  pk: KES
+  fields:
+    name: Shillings
+    full_name: "Kenyan Shillings"
+
+- model: countries_flavor.currency
+  pk: KGS
+  fields:
+    name: Soms
+    full_name: "Soms"
+    symbol: лв
+    unicode_hex:
+      - 1083
+      - 1074
+
+- model: countries_flavor.currency
+  pk: KHR
+  fields:
+    name: Rieis
+    full_name: "Kampuchean Rieis"
+
+- model: countries_flavor.currency
+  pk: KMF
+  fields:
+    name: Francs
+    full_name: "Comoros Francs"
+
+- model: countries_flavor.currency
+  pk: KPW
+  fields:
+    name: Won
+    full_name: "North Korean Won"
+    symbol: ₩
+    unicode_hex:
+      - 8361
+
+- model: countries_flavor.currency
+  pk: KRW
+  fields:
+    name: Won
+    full_name: "Korean Won"
+    symbol: ₩
+    unicode_hex:
+      - 8361
+
+- model: countries_flavor.currency
+  pk: KWD
+  fields:
+    name: Dinars
+    full_name: "Kuwaiti Dinars"
+
+- model: countries_flavor.currency
+  pk: KYD
+  fields:
+    name: Dollars
+    full_name: "Cayman Islands Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: KZT
+  fields:
+    name: Tenege
+    full_name: "Kazhakstan Tenege"
+    symbol: лв
+    unicode_hex:
+      - 1083
+      - 1074
+
+- model: countries_flavor.currency
+  pk: LAK
+  fields:
+    name: Kips
+    full_name: "Lao Kips"
+    symbol: ₭
+    unicode_hex:
+      - 8365
+
+- model: countries_flavor.currency
+  pk: LBP
+  fields:
+    name: Pounds
+    full_name: "Lebanese Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: LKR
+  fields:
+    name: Rupees
+    full_name: "Sri Lanka Rupees"
+    symbol: ₨
+    unicode_hex:
+      - 8360
+
+- model: countries_flavor.currency
+  pk: LRD
+  fields:
+    name: Dollars
+    full_name: "Liberian Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: LSL
+  fields:
+    name: Maloti
+    full_name: "Lesotho Maloti"
+
+- model: countries_flavor.currency
+  pk: LTL
+  fields:
+    name: Litai
+    full_name: "Lithuanian Litai"
+    symbol: Lt
+    unicode_hex:
+      - 76
+      - 116
+
+- model: countries_flavor.currency
+  pk: LVL
+  fields:
+    name: Lati
+    full_name: "Latvian Lati"
+    symbol: Ls
+    unicode_hex:
+      - 76
+      - 115
+
+- model: countries_flavor.currency
+  pk: LYD
+  fields:
+    name: Dinars
+    full_name: "Libyan Dinars"
+
+- model: countries_flavor.currency
+  pk: MAD
+  fields:
+    name: Dirhams
+    full_name: "Moroccan Dirhams"
+
+- model: countries_flavor.currency
+  pk: MDL
+  fields:
+    name: Lei
+    full_name: "Moldovan Lei"
+
+- model: countries_flavor.currency
+  pk: MKD
+  fields:
+    name: "Macedonian Denar"
+    full_name: "Macedonian Denar"
+
+- model: countries_flavor.currency
+  pk: MGA
+  fields:
+    name: Ariary
+    full_name: "Ariary"
+
+- model: countries_flavor.currency
+  pk: MMK
+  fields:
+    name: Kyat
+    full_name: "Myanmar Kyat"
+
+- model: countries_flavor.currency
+  pk: MNK
+  fields:
+    name: Kyats
+    full_name: "Kyats"
+
+- model: countries_flavor.currency
+  pk: MNT
+  fields:
+    name: Tugriks
+    full_name: "Mongolian Tugriks"
+    symbol: ₮
+    unicode_hex:
+      - 8366
+
+- model: countries_flavor.currency
+  pk: MOP
+  fields:
+    name: Pataca
+    full_name: "Macanese Pataca"
+
+- model: countries_flavor.currency
+  pk: MRO
+  fields:
+    name: Ouguiyas
+    full_name: "Mauritanian Ouguiyas"
+
+- model: countries_flavor.currency
+  pk: MUR
+  fields:
+    name: Rupees
+    full_name: "Mauritius Rupees"
+    symbol: ₨
+    unicode_hex:
+      - 8360
+
+- model: countries_flavor.currency
+  pk: MVR
+  fields:
+    name: Rufiyaa
+    full_name: "Maldive Rufiyaa"
+
+- model: countries_flavor.currency
+  pk: MWK
+  fields:
+    name: Kwachas
+    full_name: "Malawi Kwachas"
+
+- model: countries_flavor.currency
+  pk: MXN
+  fields:
+    name: Pesos
+    full_name: "Mexican Nuevo Pesos"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: MYR
+  fields:
+    name: Ringgits
+    full_name: "Malaysian Ringgits"
+    symbol: RM
+    unicode_hex:
+      - 82
+      - 77
+
+- model: countries_flavor.currency
+  pk: MZN
+  fields:
+    name: Meticals
+    full_name: "Mozambique Meticals"
+    symbol: MT
+    unicode_hex:
+      - 77
+      - 84
+
+- model: countries_flavor.currency
+  pk: NAD
+  fields:
+    name: Dollars
+    full_name: "Namibian Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: NGN
+  fields:
+    name: Nairas
+    full_name: "Nigerian Nairas"
+    symbol: ₦
+    unicode_hex:
+      - 8358
+
+- model: countries_flavor.currency
+  pk: NIO
+  fields:
+    name: Cordobas
+    full_name: "Nicaraguan Cordobas Oro"
+    symbol: C$
+    unicode_hex:
+      - 67
+      - 36
+
+- model: countries_flavor.currency
+  pk: NOK
+  fields:
+    name: Kroner
+    full_name: "Norwegian Kroner"
+    symbol: kr
+    unicode_hex:
+      - 123
+      - 114
+
+- model: countries_flavor.currency
+  pk: NPR
+  fields:
+    name: Rupees
+    full_name: "Nepalese Rupees"
+    symbol: ₨
+    unicode_hex:
+      - 8360
+
+- model: countries_flavor.currency
+  pk: NZD
+  fields:
+    name: "New Zealand Dollars"
+    full_name: "New Zealand Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: OMR
+  fields:
+    name: Riais
+    full_name: "Riais"
+    symbol: ﷼
+    unicode_hex:
+      - 65020
+
+- model: countries_flavor.currency
+  pk: PAB
+  fields:
+    name: Balboa
+    full_name: "Balboa"
+    symbol: B/.
+    unicode_hex:
+      - 66
+      - 47
+      - 46
+
+- model: countries_flavor.currency
+  pk: PEN
+  fields:
+    name: "Nuevos Soles"
+    full_name: "Peru Nuevos Soles"
+    symbol: S/.
+    unicode_hex:
+      - 0x50
+      - 0x2f
+      - 0x2e
+
+- model: countries_flavor.currency
+  pk: PGK
+  fields:
+    name: Kina
+    full_name: "Kina"
+
+- model: countries_flavor.currency
+  pk: PHP
+  fields:
+    name: Pesos
+    full_name: "Phillippines Pesos"
+    symbol: Php
+    unicode_hex:
+      - 80
+      - 104
+      - 112
+
+- model: countries_flavor.currency
+  pk: PKR
+  fields:
+    name: Rupees
+    full_name: "Pakistani Rupees"
+    symbol: ₨
+    unicode_hex:
+      - 8360
+
+- model: countries_flavor.currency
+  pk: PLN
+  fields:
+    name: Zlotych
+    full_name: "Poland Zlotych"
+    symbol: zł
+    unicode_hex:
+      - 122
+      - 322
+
+- model: countries_flavor.currency
+  pk: PYG
+  fields:
+    name: Guarani
+    full_name: "Paraguay Guarani"
+    symbol: Gs
+    unicode_hex:
+      - 71
+      - 115
+
+- model: countries_flavor.currency
+  pk: QAR
+  fields:
+    name: Rials
+    full_name: "Qatar Rials"
+    symbol: ﷼
+    unicode_hex:
+      - 65020
+
+- model: countries_flavor.currency
+  pk: RON
+  fields:
+    name: "New Lei"
+    full_name: "Romanian New Lei"
+    symbol: lei
+    unicode_hex:
+      - 108
+      - 101
+      - 105
+
+- model: countries_flavor.currency
+  pk: RSD
+  fields:
+    name: Dinars
+    full_name: "Serbia Dinars"
+    symbol: Дин.
+    unicode_hex:
+      - 1044
+      - 1080
+      - 1085
+      - 46
+
+- model: countries_flavor.currency
+  pk: RUB
+  fields:
+    name: Rubles
+    full_name: "Russia Rubles"
+    symbol: руб
+    unicode_hex:
+      - 1088
+      - 1091
+      - 1073
+
+- model: countries_flavor.currency
+  pk: RWF
+  fields:
+    name: Francs
+    full_name: "Francs"
+
+- model: countries_flavor.currency
+  pk: SAR
+  fields:
+    name: Riyals
+    full_name: "Saudi Arabia Riyals"
+    symbol: ﷼
+    unicode_hex:
+      - 65020
+
+- model: countries_flavor.currency
+  pk: SBD
+  fields:
+    name: Dollars
+    full_name: "Solomon Islands Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: SCR
+  fields:
+    name: Rupees
+    full_name: "Seychelles Rupees"
+    symbol: ₨
+    unicode_hex:
+      - 8360
+
+- model: countries_flavor.currency
+  pk: SDG
+  fields:
+    name: Pounds
+    full_name: "Pounds"
+
+- model: countries_flavor.currency
+  pk: SEK
+  fields:
+    name: Kronor
+    full_name: "Sweden Kronor"
+    symbol: kr
+    unicode_hex:
+      - 107
+      - 114
+
+- model: countries_flavor.currency
+  pk: SGD
+  fields:
+    name: Dollars
+    full_name: "Singapore Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: SHP
+  fields:
+    name: Pounds
+    full_name: "Saint Helena Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: SLL
+  fields:
+    name: Leones
+    full_name: "Leones"
+
+- model: countries_flavor.currency
+  pk: SOS
+  fields:
+    name: Shillings
+    full_name: "Somalia Shillings"
+    symbol: S
+    unicode_hex:
+      - 83
+
+- model: countries_flavor.currency
+  pk: SRD
+  fields:
+    name: Dollars
+    full_name: "Surifull_name Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: STD
+  fields:
+    name: Dobras
+    full_name: "Dobras"
+
+- model: countries_flavor.currency
+  pk: SVC
+  fields:
+    name: "Salvadoran Colón"
+    full_name: "Salvadoran Colón"
+
+- model: countries_flavor.currency
+  pk: SYP
+  fields:
+    name: Pounds
+    full_name: "Syria Pounds"
+    symbol: £
+    unicode_hex:
+      - 163
+
+- model: countries_flavor.currency
+  pk: SZL
+  fields:
+    name: Emalangeni
+    full_name: "Emalangeni"
+
+- model: countries_flavor.currency
+  pk: THB
+  fields:
+    name: Baht
+    full_name: "Thailand Baht"
+    symbol: ฿
+    unicode_hex:
+      - 3647
+
+- model: countries_flavor.currency
+  pk: TJS
+  fields:
+    name: Somoni
+    full_name: "Somoni"
+
+- model: countries_flavor.currency
+  pk: TMM
+  fields:
+    name: Manat
+    full_name: "Manat"
+
+- model: countries_flavor.currency
+  pk: TND
+  fields:
+    name: "Dinars"
+    full_name: "Tunisian Dinars"
+
+- model: countries_flavor.currency
+  pk: TOP
+  fields:
+    name: Pa'anga
+    full_name: "Pa'anga"
+
+- model: countries_flavor.currency
+  pk: TRY
+  fields:
+    name: Lira
+    full_name: "Turkey Lira"
+    symbol: TL
+    unicode_hex:
+      - 84
+      - 76
+
+- model: countries_flavor.currency
+  pk: TTD
+  fields:
+    name: Dollars
+    full_name: "Trinidad and Tobago Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: TVD
+  fields:
+    name: "Tuvalu Dollars"
+    full_name: "Tuvalu Dollars"
+
+- model: countries_flavor.currency
+  pk: TWD
+  fields:
+    name: "New Dollars"
+    full_name: "Taiwan New Dollars"
+    symbol: NT$
+    unicode_hex:
+      - 78
+      - 84
+      - 36
+
+- model: countries_flavor.currency
+  pk: TZS
+  fields:
+    name: Shillings
+    full_name: "Shillings"
+
+- model: countries_flavor.currency
+  pk: UAH
+  fields:
+    name: Hryvnia
+    full_name: "Ukraine Hryvnia"
+    symbol: ₴
+    unicode_hex:
+      - 8372
+
+- model: countries_flavor.currency
+  pk: UGX
+  fields:
+    name: Shillings
+    full_name: "Shillings"
+
+- model: countries_flavor.currency
+  pk: USD
+  fields:
+    name: Dollars
+    full_name: "United States Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: UYU
+  fields:
+    name: Pesos
+    full_name: "Uruguay Pesos"
+    symbol: $U
+    unicode_hex:
+      - 36
+      - 85
+
+- model: countries_flavor.currency
+  pk: UZS
+  fields:
+    name: Sums
+    full_name: "Uzbekistan Sums"
+    symbol: лв
+    unicode_hex:
+      - 1083
+      - 1074
+
+- model: countries_flavor.currency
+  pk: VEF
+  fields:
+    name: "Bolivares Fuertes"
+    full_name: "Venezuela Bolivares Fuertes"
+    symbol: Bs
+    unicode_hex:
+      - 1083
+      - 1074
+
+- model: countries_flavor.currency
+  pk: VND
+  fields:
+    name: Dong
+    full_name: "Viet Nam Dong"
+    symbol: ₫
+    unicode_hex:
+      - 8363
+
+- model: countries_flavor.currency
+  pk: VUV
+  fields:
+    name: Vatu
+    full_name: "Vanuatu Vatu"
+
+- model: countries_flavor.currency
+  pk: WST
+  fields:
+    name: Tala
+    full_name: 'Samoan Tala'
+
+- model: countries_flavor.currency
+  pk: XAF
+  fields:
+    name: "Communauté Financière Africaine Francs"
+    full_name: "Communauté Financière Africaine Francs"
+
+- model: countries_flavor.currency
+  pk: XCD
+  fields:
+    name: "East Caribbean Dollars"
+    full_name: "East Caribbean Dollars"
+    symbol: $
+    unicode_hex:
+      - 36
+
+- model: countries_flavor.currency
+  pk: XOF
+  fields:
+    name: "Communauté Financière Africaine Francs"
+    full_name: "Communauté Financière Africaine Francs"
+
+- model: countries_flavor.currency
+  pk: XPF
+  fields:
+    name: "Comptoirs Français du Pacifique Francs"
+    full_name: "Comptoirs Français du Pacifique Francs"
+
+- model: countries_flavor.currency
+  pk: YER
+  fields:
+    name: Rials
+    full_name: "Yemen Rials"
+    symbol: ﷼
+    unicode_hex:
+      - 65020
+
+- model: countries_flavor.currency
+  pk: ZAR
+  fields:
+    name: Rand
+    full_name: "South Africa Rand"
+    symbol: R
+    unicode_hex:
+      - 82
+
+- model: countries_flavor.currency
+  pk: ZMW
+  fields:
+    name: Kwacha
+    full_name: "Zambian Kwacha"
+    symbol: K
+
+- model: countries_flavor.currency
+  pk: ZWD
+  fields:
+    name: "Zimbabwe Dollars"
+    full_name: "Zimbabwe Dollars"
+    symbol: Z$
+    unicode_hex:
+      - 90
+      - 36
