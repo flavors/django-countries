@@ -15,7 +15,7 @@ addons:
 
   code_climate:
     repo_token:
-      secure: 'd4yq1CoOwBTBN8/OFXDVR7aF3cfCC9VfL6nSwpiCykLlYK41aTy7+Rqr1WPszR6o7zU9hB3znDAIZ/EJ2Q65FWmyeuSlyfQ38a9vwglITSxOQ2jduT2GlUpW3P6OKti0zPOT3sgJM'
+      secure: 'hHMqmqPpzOryQ33ns4jgKpLEqJe+//3kNYSYRo1R4+4rmOxqPDwmsyC9km/v2r2XHwcVs2yWx4U3tpHUzbwUYz5aAiC9SI6DAnDb0VJz/f1UR4fAN5X/2Z5Lbv'
 
 before_install:
   - sudo apt-get update -qq
