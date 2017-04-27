@@ -20,7 +20,7 @@ setup(
     name='countries-flavor',
     version=get_version('countries_flavor'),
     license='MIT',
-    description='Django countries app',
+    description='A Django application that provides a list of countries.',
     long_description='\n\n'.join(get_long_description()),
     author='mongkok',
     author_email='dani.pyc@gmail.com',
