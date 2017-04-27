@@ -8,7 +8,7 @@ class CommandsTests(TestCase):
 
     def test_command_countries_setup(self):
         countries = ('AD', 'FR', 'XK')
-        call_command('countries_setup', countries=','.join(countries))
+        call_command('collect_countries', countries=','.join(countries))
 
         manager = models.Country.objects
 

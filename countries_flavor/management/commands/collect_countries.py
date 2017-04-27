@@ -2,6 +2,7 @@ import json
 import requests
 
 from django.contrib.gis import geos
+from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
 from ... import models
@@ -10,22 +11,23 @@ from ... import models
 class Command(BaseCommand):
     DATASET_URL = 'https://raw.githubusercontent.com/mledoze/countries'
 
-    help = 'Set up :)'
+    help = 'Collect countries dataset :)'
 
     def add_arguments(self, parser):
         parser.add_argument(
             '--countries', '-c',
             dest='countries',
-            help='Comma separated country list using ISO 3166-1 alpha-2')
+            help='Comma separated list of countries in ISO 3166-1 alpha-2')
 
     def handle(self, **options):
-        countries = self.request('dist/countries')
-        country_codes = options['countries'].split(',')
+        countries_path = 'dist/countries'
+        countries = self.request(countries_path)
+        country_codes = options['countries']
 
-        if country_codes:
+        if country_codes is not None:
             countries = [
                 country for country in countries
-                if country['cca2'] in country_codes]
+                if country['cca2'] in country_codes.split(',')]
 
         for data in countries:
             country, _ = self.update_or_create_country(data)
@@ -43,14 +45,24 @@ class Command(BaseCommand):
             self.stdout.flush()
 
         self.add_borders(countries)
-        self.stdout.write(self.style.SUCCESS(' SUCCESS!!'))
+
+        self.stdout.write("\nInstalled {count} object(s) from {url}".format(
+            count=len(countries),
+            url=self.endpoint(countries_path)
+        ))
+
+        call_command('loaddata', 'currencies')
+
+    @classmethod
+    def endpoint(cls, path):
+        return "{dataset_url}/master/{path}.json".format(
+            dataset_url=cls.DATASET_URL,
+            path=path
+        )
 
     @classmethod
     def request(cls, path):
-        return requests.get("{dataset_url}/master/{path}.json".format(
-            dataset_url=cls.DATASET_URL,
-            path=path
-        )).json()
+        return requests.get(cls.endpoint(path)).json()
 
     @classmethod
     def update_or_create_country(cls, data):
