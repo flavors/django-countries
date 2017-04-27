@@ -105,7 +105,14 @@ class Currency(models.Model):
         primary_key=True,
         regex=r'[A-Z]')
 
+    name = models.CharField(_('name'), max_length=64)
+    full_name = models.CharField(_('full name'), max_length=64)
+
     symbol = models.CharField(_('symbol'), max_length=4)
+    unicode_hex = ArrayField(
+        models.CharField(max_length=8),
+        null=True,
+        verbose_name=_('unicode hex'))
 
     class Meta:
         ordering = ('code',)
