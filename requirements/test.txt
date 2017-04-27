@@ -1,6 +1,7 @@
 -r rest.txt
 
 coverage>=4.3.4
+mock>=2.0.0
 psycopg2>=2.6.2
 PyYAML>=3.12
 requests>=1.1.0

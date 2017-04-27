@@ -1,3 +1,5 @@
+import mock
+
 from django.core.management import call_command
 from django.test import TestCase
 
@@ -6,7 +8,12 @@ from countries_flavor import models
 
 class CommandsTests(TestCase):
 
-    def test_command_countries_setup(self):
+    @mock.patch('countries_flavor.management.commands.collect_countries'
+                '.Command.request', new=lambda cls, path: [])
+    def test_command_collect_countries(self):
+        call_command('collect_countries')
+
+    def test_command_collected_countries_list(self):
         countries = ('AD', 'FR', 'XK')
         call_command('collect_countries', countries=','.join(countries))
 
