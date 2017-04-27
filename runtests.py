@@ -8,7 +8,7 @@ import django
 from django.conf import settings
 from django.test.runner import DiscoverRunner
 
-from tests.helpers import get_postgres_engine
+from tests.compat import get_postgres_engine
 
 
 DEFAULT_SETTINGS = dict(
