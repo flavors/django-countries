@@ -3,6 +3,8 @@ Countries flavor
 
 |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
+A Django application that provides a list of countries.
+
 
 Dependencies
 ------------
@@ -14,13 +16,13 @@ Dependencies
 Installation
 ------------
 
-Using pip:
+Install last stable version from pypi.
 
 .. code:: sh
 
     pip install countries-flavor
 
-Add 'countries_flavor' to your INSTALLED_APPS setting.
+Add ``countries_flavor`` to your INSTALLED_APPS setting.
 
 .. code:: python
 
@@ -51,32 +53,35 @@ The collect_countries management command loads the countries into the database.
     python manage.py collect_countries
 
 
-You can use the option '-c' to specify a comma separated list of countries in ISO 3166-1 alpha-2.
+You can use the option ``-c`` to specify a comma separated list of countries in ISO 3166-1 alpha-2.
 
 .. code:: sh
 
     python manage.py collect_countries -c HK,VN
+
     Installed 2 object(s) from https://raw.githubusercontent.com/mledoze/countries/master/dist/countries.json
     Installed 163 object(s) from 1 fixture(s)
+
+
+Standards ISO
+-------------
+
+* Country `ISO 3166-1 <https://en.wikipedia.org/wiki/ISO_3166-1>`__
+* Currency `ISO 4217 <https://en.wikipedia.org/wiki/ISO_4217>`__
+* Language `ISO 639-3 <https://en.wikipedia.org/wiki/ISO_639-3>`__
 
 
 Credits
 -------
 
-* **Countries**: `mledoze/countries`_
-* **Currencies**: `hexorx/currencies`_
+* **Countries**: `mledoze/countries <https://github.com/mledoze/countries>`__
+* **Currencies**: `hexorx/currencies <https://github.com/hexorx/currencies>`__
 
 
 Demo
 ----
 
-Demo is available at `api.domake.io/countries`_
-
-
-.. _api.domake.io/countries: http://api.domake.io/countries
-
-.. _mledoze/countries: https://github.com/mledoze/countries
-.. _hexorx/currencies: https://github.com/hexorx/currencies
+Demo is available at `api.domake.io/countries <http://api.domake.io/countries>`__
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/countries-flavor.svg
    :target: https://pypi.python.org/pypi/countries-flavor
