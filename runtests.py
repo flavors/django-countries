@@ -8,8 +8,6 @@ import django
 from django.conf import settings
 from django.test.runner import DiscoverRunner
 
-from tests.compat import get_postgres_engine
-
 
 DEFAULT_SETTINGS = dict(
     INSTALLED_APPS=(
@@ -23,7 +21,7 @@ DEFAULT_SETTINGS = dict(
     ),
     DATABASES={
         'default': {
-            'ENGINE': get_postgres_engine(),
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
             'NAME': os.environ['DB_NAME'],
             'USER': os.environ.get('DB_USER', 'postgres'),
             'PASSWORD': os.environ.get('DB_PASSWORD', '')
