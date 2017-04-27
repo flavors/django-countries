@@ -9,9 +9,11 @@ test:
 		--cov-report term\
 		--cov-report xml
 
+test-all:
+	@tox
+
 release:
-	@python setup.py register
 	@python setup.py sdist upload
 	@python setup.py bdist_wheel upload
 
-.PHONY: test release
+.PHONY: test test-all release
