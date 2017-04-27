@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Countries flavor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-26 11:42+0000\n"
+"POT-Creation-Date: 2017-04-26 20:44+0000\n"
 "PO-Revision-Date: 2017-04-26 11:44+0000\n"
 "Last-Translator: mongkok <dani.pyc@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -19,98 +19,110 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: models.py:10
+#: apps.py:7
+msgid "Countries"
+msgstr "Países"
+
+#: models.py:12
 msgid "code ISO 3166-1 alpha-2"
 msgstr "código ISO 3166-1 alpha-2"
 
-#: models.py:16
+#: models.py:18
 msgid "code ISO 3166-1 alpha-3"
 msgstr "código ISO 3166-1 alpha-3"
 
-#: models.py:21
+#: models.py:23
 msgid "code ISO 3166-1 numeric"
 msgstr "código ISO 3166-1 numérico"
 
-#: models.py:26
+#: models.py:28
 msgid "code International Olympic Committee"
 msgstr "código Comité Olímpico Internacional"
 
-#: models.py:33
+#: models.py:35
 msgid "region"
 msgstr "región"
 
-#: models.py:34
+#: models.py:36
 msgid "subregion"
 msgstr "subregión"
 
-#: models.py:35
+#: models.py:37
 msgid "capital"
 msgstr ""
 
-#: models.py:36
+#: models.py:38
 msgid "landlocked status"
 msgstr "sin litoral"
 
-#: models.py:37
+#: models.py:39
 msgid "name of residents"
 msgstr "gentilicio"
 
-#: models.py:38
+#: models.py:40
 msgid "land area in km"
 msgstr "área terrestre en km"
 
-#: models.py:42
+#: models.py:44
 msgid "alternative spellings"
 msgstr "variantes ortográficas"
 
-#: models.py:48
+#: models.py:50
 msgid "calling codes"
 msgstr "prefijos telefónicos"
 
-#: models.py:52
+#: models.py:54
 msgid "country code top-level domains"
 msgstr "dominios de nivel superior de código de país"
 
-#: models.py:57
+#: models.py:59
 msgid "land borders"
 msgstr "fronteras terrestres"
 
-#: models.py:61
+#: models.py:63
 msgid "currencies"
 msgstr "monedas"
 
-#: models.py:65
+#: models.py:67
 msgid "official languages"
 msgstr "idiomas oficiales"
 
-#: models.py:79
+#: models.py:81
 msgid "country"
 msgstr "país"
 
-#: models.py:84
+#: models.py:87
 msgid "language"
 msgstr "idioma"
 
-#: models.py:86
+#: models.py:89
 msgid "common name"
 msgstr "nombre común"
 
-#: models.py:87
+#: models.py:90
 msgid "official name"
 msgstr "nombre oficial"
 
-#: models.py:100
+#: models.py:103
 msgid "code ISO 4217"
 msgstr "código ISO 4217"
 
-#: models.py:105
-msgid "symbol"
-msgstr "símbolo"
-
-#: models.py:116
+#: models.py:108 models.py:126
 msgid "name"
 msgstr "nombre"
 
-#: models.py:118
+#: models.py:109
+msgid "full name"
+msgstr "nombre completo"
+
+#: models.py:111
+msgid "symbol"
+msgstr "símbolo"
+
+#: models.py:115
+msgid "unicode hex"
+msgstr "unicode hexadecimal"
+
+#: models.py:128
 msgid "language code ISO 639-3"
 msgstr "código de idioma ISO 639-3"
