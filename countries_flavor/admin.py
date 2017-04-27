@@ -11,12 +11,13 @@ class CountryAdmin(admin.OSMGeoAdmin):
 
     list_filter = ('landlocked',)
     search_fields = (
-        'cca2', 'cca3', 'ccn3', 'cioc', 'region', 'subregion', 'capital')
+        '=cca2', '=cca3', '=ccn3', '=cioc',
+        '^region', '^subregion', '^capital')
 
 
 @admin.register(models.Currency)
 class CurrencyAdmin(admin.ModelAdmin):
-    list_display = ('code',  'symbol')
+    list_display = ('code',  'name', 'full_name', 'symbol')
     search_fields = list_display
 
 
