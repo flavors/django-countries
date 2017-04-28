@@ -1,4 +1,5 @@
-from rest_framework_gis import serializers
+from rest_framework import serializers
+from rest_framework_gis import serializers as gis_serializers
 
 from .. import models
 
@@ -17,22 +18,22 @@ class LanguageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class TranslationSerializer(serializers.ModelSerializer):
+class CountryTranslationSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.Translation
+        model = models.CountryTranslation
         exclude = ('id', 'country')
 
 
-class ListCountrySerializer(serializers.GeoFeatureModelSerializer):
+class ListCountrySerializer(gis_serializers.GeoFeatureModelSerializer):
     currencies = CurrencySerializer(many=True)
     languages = LanguageSerializer(many=True)
-    translations = TranslationSerializer(many=True)
+    translations = CountryTranslationSerializer(many=True, source='names')
 
     class Meta:
         model = models.Country
         id_field = False
-        exclude = ('geo',)
+        exclude = ('mpoly',)
         geo_field = 'location'
 
 
@@ -42,4 +43,4 @@ class DetailCountrySerializer(ListCountrySerializer):
         model = models.Country
         id_field = False
         fields = '__all__'
-        geo_field = 'geo'
+        geo_field = 'mpoly'
