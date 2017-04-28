@@ -2,7 +2,6 @@ import json
 import requests
 
 from django.contrib.gis import geos
-from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
 from ... import models
@@ -51,8 +50,6 @@ class Command(BaseCommand):
             url=self.endpoint(countries_path)
         ))
 
-        call_command('loaddata', 'currencies')
-
     @classmethod
     def endpoint(cls, path):
         return "{dataset_url}/master/{path}.json".format(
@@ -95,7 +92,7 @@ class Command(BaseCommand):
                 'alt_spellings': data['altSpellings'],
                 'calling_codes': data['callingCode'],
                 'tlds': data['tld'],
-                'geo': geometry
+                'mpoly': geometry
             })
 
     @classmethod
@@ -122,7 +119,7 @@ class Command(BaseCommand):
     def add_languages(cls, country, languages):
         for language_code, name in languages.items():
             language, _ = models.Language.objects.update_or_create(
-                code=language_code,
+                cla3=language_code,
                 defaults={'name': name})
 
             country.languages.add(language)
@@ -131,9 +128,9 @@ class Command(BaseCommand):
     def add_translations(cls, country, translations):
         for language_code, name in translations.items():
             language, _ = models.Language.objects\
-                .get_or_create(code=language_code)
+                .get_or_create(cla3=language_code)
 
-            models.Translation.objects.update_or_create(
+            models.CountryTranslation.objects.update_or_create(
                 country=country,
                 language=language,
                 defaults={
