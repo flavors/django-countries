@@ -3,7 +3,7 @@ Countries flavor
 
 |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
-A Django application that provides a list of countries.
+A Django application that provides a list of countries, timezones, currencies, languages, locales and translations.
 
 
 Dependencies
@@ -42,25 +42,21 @@ Hook the Django Rest Framework urls into your URLconf.
         url(r'^', include('countries_flavor.rest_framework.urls')
     ]
 
+Apply migrations.
+
+.. code:: python
+
+    python manage.py migrate
+
 
 Collect data
 ------------
 
-The collect_countries management command loads the countries into the database.
+The ``load_countries`` management command loads all `fixtures <countries_flavor/fixtures>`__ into the database.
 
 .. code:: sh
 
-    python manage.py collect_countries
-
-
-You can use the option ``-c`` to specify a comma separated list of countries in ISO 3166-1 alpha-2.
-
-.. code:: sh
-
-    python manage.py collect_countries -c HK,VN
-
-    Installed 2 object(s) from https://raw.githubusercontent.com/mledoze/countries/master/dist/countries.json
-    Installed 163 object(s) from 1 fixture(s)
+    python manage.py load_countries
 
 
 Standards ISO
@@ -68,20 +64,33 @@ Standards ISO
 
 * Country `ISO 3166-1 <https://en.wikipedia.org/wiki/ISO_3166-1>`__
 * Currency `ISO 4217 <https://en.wikipedia.org/wiki/ISO_4217>`__
+* Language `ISO 639-1 <https://en.wikipedia.org/wiki/ISO_639-1>`__
 * Language `ISO 639-3 <https://en.wikipedia.org/wiki/ISO_639-3>`__
 
+
+Not found!
+----------
+
+* Country ISO 3166-1: DG, SH, EA, IC, BQ
+* Language ISO 639-1: sh
 
 Credits
 -------
 
-* **Countries**: `mledoze/countries <https://github.com/mledoze/countries>`__
-* **Currencies**: `hexorx/currencies <https://github.com/hexorx/currencies>`__
+* Countries: `mledoze/countries <https://github.com/mledoze/countries>`__
+* Country translations `umpirsky/country-list <https://github.com/umpirsky/country-list>`__
+* Locale translations `umpirsky/locale-list <https://github.com/umpirsky/locale-list>`__
+* Currency translations `umpirsky/currency-list <https://github.com/umpirsky/currency-list>`__
+* Currency symbols: `hexorx/currencies <https://github.com/hexorx/currencies>`__
+* Divisions and extra data: `rinvex/country <https://github.com/rinvex/country>`__
+* Timezones: `antonioribeiro/countries <https://github.com/antonioribeiro/countries>`__
+* Languages ISO 639-1 / ISO 639-3: `wikipedia <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>`__
 
 
 Demo
 ----
 
-Demo is available at `api.domake.io/countries <http://api.domake.io/countries>`__
+Demo is **NOT** available at `api.domake.io/countries <http://api.domake.io/countries>`__
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/countries-flavor.svg
    :target: https://pypi.python.org/pypi/countries-flavor
