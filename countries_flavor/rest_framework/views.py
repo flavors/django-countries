@@ -12,6 +12,7 @@ class CountryViewSet(viewsets.ReadOnlyModelViewSet):
             'borders',
             'currencies',
             'languages',
+            'timezones',
             'translations')
 
     permission_classes = (permissions.AllowAny,)
