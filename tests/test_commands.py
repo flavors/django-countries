@@ -25,3 +25,11 @@ class CommandsTests(TestCase):
 
         border = manager.get(cca2='AD').borders.get(cca2='FR')
         self.assertTrue(border.cca2, 'FR')
+
+    def test_command_load_countries(self):
+        call_command('load_countries')
+
+        self.assertEqual(models.Country.objects.count(), 248)
+
+    def test_command_dump_countries(self):
+        call_command('dump_countries')
