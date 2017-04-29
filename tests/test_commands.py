@@ -26,6 +26,9 @@ class CommandsTests(TestCase):
         border = manager.get(cca2='AD').borders.get(cca2='FR')
         self.assertTrue(border.cca2, 'FR')
 
+    def test_command_collect_translations(self):
+        call_command('collect_trans')
+
     def test_command_load_and_dump_countries(self):
         call_command('load_countries')
 
