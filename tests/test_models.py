@@ -25,10 +25,10 @@ class ModelsTests(TestCase):
 
         language_code = random_code(string.ascii_lowercase, 3)
         language, _ = models.Language.objects\
-            .get_or_create(code=language_code)
+            .get_or_create(cla3=language_code)
         self.assertEqual(str(language), language_code)
 
-        translation, _ = models.Translation.objects.get_or_create(
+        translation, _ = models.CountryTranslation.objects.get_or_create(
             country=country,
             language=language)
 
