@@ -7,8 +7,7 @@ engines:
     - "**urls.py"
     config:
       languages:
-        python:
-          mass_threshold: 5
+      - python
   fixme:
     enabled: true
   radon:
