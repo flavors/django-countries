@@ -1,6 +1,20 @@
 Change Log
 ==========
 
+`0.0.2-dev`_ (2017-?-?)
+-----------------------
+
+* Loaddata command
+* Dumpdata command
+* Fixtures
+* Continent
+* Country extra data
+* Divisions
+* Locales
+* Languages ISO 639-1
+* Timezones
+
+
 `0.0.1`_ (2017-04-27)
 ---------------------
 
