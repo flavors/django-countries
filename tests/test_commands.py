@@ -29,7 +29,14 @@ class CommandsTests(TestCase):
     def test_command_load_countries(self):
         call_command('load_countries')
 
-        self.assertEqual(models.Country.objects.count(), 248)
+        self.assertEqual(models.Country.objects.exists())
+        self.assertEqual(models.CountryTranslation.objects.exists())
+        self.assertEqual(models.Currency.objects.exists())
+        self.assertEqual(models.Division.objects.exists())
+        self.assertEqual(models.Language.objects.exists())
+        self.assertEqual(models.Locale.objects.exists())
+        self.assertEqual(models.Timezone.objects.exists())
+        self.assertEqual(models.Translation.objects.exists())
 
     def test_command_dump_countries(self):
         call_command('dump_countries')
