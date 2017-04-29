@@ -26,17 +26,16 @@ class CommandsTests(TestCase):
         border = manager.get(cca2='AD').borders.get(cca2='FR')
         self.assertTrue(border.cca2, 'FR')
 
-    def test_command_load_countries(self):
+    def test_command_load_and_dump_countries(self):
         call_command('load_countries')
 
-        self.assertEqual(models.Country.objects.exists())
-        self.assertEqual(models.CountryTranslation.objects.exists())
-        self.assertEqual(models.Currency.objects.exists())
-        self.assertEqual(models.Division.objects.exists())
-        self.assertEqual(models.Language.objects.exists())
-        self.assertEqual(models.Locale.objects.exists())
-        self.assertEqual(models.Timezone.objects.exists())
-        self.assertEqual(models.Translation.objects.exists())
+        self.assertTrue(models.Country.objects.exists())
+        self.assertTrue(models.CountryTranslation.objects.exists())
+        self.assertTrue(models.Currency.objects.exists())
+        self.assertTrue(models.Division.objects.exists())
+        self.assertTrue(models.Language.objects.exists())
+        self.assertTrue(models.Locale.objects.exists())
+        self.assertTrue(models.Timezone.objects.exists())
+        self.assertTrue(models.Translation.objects.exists())
 
-    def test_command_dump_countries(self):
         call_command('dump_countries')
