@@ -21,7 +21,7 @@ class ModelsTests(TestCase):
         language = models.Language(cla3=language_code)
         self.assertEqual(str(language), language_code)
 
-        country_name = models.CountryTranslation(
+        country_name = models.CountryName(
             country=country,
             language=language)
 

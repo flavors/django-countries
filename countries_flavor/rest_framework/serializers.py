@@ -18,17 +18,17 @@ class LanguageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CountryTranslationSerializer(serializers.ModelSerializer):
+class CountryNameSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.CountryTranslation
+        model = models.CountryName
         exclude = ('id', 'country')
 
 
 class ListCountrySerializer(gis_serializers.GeoFeatureModelSerializer):
     currencies = CurrencySerializer(many=True)
     languages = LanguageSerializer(many=True)
-    translations = CountryTranslationSerializer(many=True, source='names')
+    translations = CountryNameSerializer(many=True, source='names')
 
     class Meta:
         model = models.Country

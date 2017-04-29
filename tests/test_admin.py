@@ -24,11 +24,8 @@ class AdminTests(TestCase):
         model_admin = admin.CountryAdmin(models.Country, self.site)
         self.assertIn('cca2', model_admin.get_fields(request))
 
-    def test_admin_country_translation(self):
-        model_admin = admin.CountryTranslationAdmin(
-            models.CountryTranslation,
-            self.site)
-
+    def test_admin_country_name(self):
+        model_admin = admin.CountryNameAdmin(models.CountryName, self.site)
         self.assertIn('country', model_admin.get_fields(request))
 
     def test_admin_currency(self):

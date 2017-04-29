@@ -130,7 +130,7 @@ class Command(BaseCommand):
             language, _ = models.Language.objects\
                 .get_or_create(cla3=language_code)
 
-            models.CountryTranslation.objects.update_or_create(
+            models.CountryName.objects.update_or_create(
                 country=country,
                 language=language,
                 defaults={

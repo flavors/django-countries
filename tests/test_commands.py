@@ -33,7 +33,7 @@ class CommandsTests(TestCase):
         call_command('load_countries')
 
         self.assertTrue(models.Country.objects.exists())
-        self.assertTrue(models.CountryTranslation.objects.exists())
+        self.assertTrue(models.CountryName.objects.exists())
         self.assertTrue(models.Currency.objects.exists())
         self.assertTrue(models.Division.objects.exists())
         self.assertTrue(models.Language.objects.exists())

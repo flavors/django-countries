@@ -156,7 +156,7 @@ class Country(models.Model):
         return self.cca2
 
 
-class CountryTranslation(models.Model):
+class CountryName(models.Model):
     country = models.ForeignKey(
         'Country',
         on_delete=models.CASCADE,
@@ -175,8 +175,8 @@ class CountryTranslation(models.Model):
     class Meta:
         ordering = ('country', 'language')
         unique_together = ('country', 'language')
-        verbose_name = _('country translation')
-        verbose_name_plural = _('country translations')
+        verbose_name = _('country name')
+        verbose_name_plural = _('country names')
 
     def __str__(self):
         return "{self.country} ({self.language}): {self.common}"\

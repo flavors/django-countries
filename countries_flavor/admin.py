@@ -21,8 +21,8 @@ class CountryAdmin(admin.OSMGeoAdmin):
         '^region', '^subregion', '^capital')
 
 
-@admin.register(models.CountryTranslation)
-class CountryTranslationAdmin(admin.ModelAdmin):
+@admin.register(models.CountryName)
+class CountryNameAdmin(admin.ModelAdmin):
     list_display = ('country',  'language', 'common', 'official')
     list_filter = ('language',)
     search_fields = ('common', 'official')
