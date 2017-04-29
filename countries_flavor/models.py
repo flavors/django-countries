@@ -240,7 +240,7 @@ class Division(models.Model):
 
     class Meta:
         ordering = ('country', 'code')
-        unique_together = ('code', 'country')
+        unique_together = ('country', 'code')
         verbose_name = _('division')
         verbose_name_plural = _('divisions')
 

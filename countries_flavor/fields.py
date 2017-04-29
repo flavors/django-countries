@@ -3,7 +3,6 @@ from django.db import models
 
 
 class CodeISOField(models.CharField):
-
     description = 'code ISO field using fixed length'
 
     def __init__(self, verbose_name, length, regex, *args, **kwargs):
