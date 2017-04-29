@@ -236,11 +236,11 @@ class Division(models.Model):
     poly = models.PolygonField(null=True)
 
     def __str__(self):
-        return "{self.country}: {self.name}".format(self=self)
+        return "{self.country}: {self.code}".format(self=self)
 
     class Meta:
         ordering = ('country', 'code')
-        unique_together = ('country', 'code')
+        unique_together = ('code', 'country')
         verbose_name = _('division')
         verbose_name_plural = _('divisions')
 
