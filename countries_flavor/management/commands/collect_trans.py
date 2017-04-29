@@ -11,5 +11,5 @@ class Command(BaseCommand):
             help='Comma separated list of locales')
 
     def handle(self, **options):
-        # TODO
+        # T O D O
         pass

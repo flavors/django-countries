@@ -272,7 +272,7 @@ class Language(models.Model):
 
 
 class Locale(models.Model):
-    # TODO manager: re.compile(r'.*_([A-Z]{2})$')
+    # T O D O manager: re.compile(r'.*_([A-Z]{2})$')
 
     code = models.CharField(
         _('code'),
