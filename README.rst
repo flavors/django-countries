@@ -1,5 +1,5 @@
-Countries flavor
-================
+Django Countries Flavor
+=======================
 
 |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
