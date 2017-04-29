@@ -1,7 +1,27 @@
 import os
 
-from django.core.management import call_command
+from django.core import serializers
 from django.core.management.base import BaseCommand
+
+
+class TextIOWrapper(object):
+
+    def __init__(self, path, mode, format):
+        self._file = open(path, mode)
+        self.format = format
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self._file.close()
+
+    def read(self):
+        return serializers.deserialize(self.format, self._file.read())
+
+    def write(self, queryset, **kwargs):
+        data = serializers.serialize(self.format, queryset, **kwargs)
+        self._file.write(data)
 
 
 class DumperBaseCommand(BaseCommand):
@@ -12,7 +32,8 @@ class DumperBaseCommand(BaseCommand):
 
         super(DumperBaseCommand, self).__init__(*args, **kwargs)
 
-    @classmethod
-    def dumpdata(cls, model_name, path):
-        model = "countries_flavor.{model}".format(model=model_name)
-        call_command('dumpdata', model, '--output', path)
+    def get_fixture_path(self, path):
+        return "{path}.json".format(path=os.path.join(self.rootdir, path))
+
+    def open_fixture(self, path, mode):
+        return TextIOWrapper(self.get_fixture_path(path), mode, 'json')
