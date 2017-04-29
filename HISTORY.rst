@@ -4,10 +4,10 @@ Change Log
 `0.0.2-dev`_ (2017-?-?)
 -----------------------
 
-* Loaddata command
-* Dumpdata command
+* Loaddata command ``load_countries``
+* Dumpdata command ``dump_countries``
 * Fixtures
-* Continent
+* Continents
 * Country extra data
 * Divisions
 * Locales
