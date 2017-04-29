@@ -42,7 +42,7 @@ class ModelsTests(TestCase):
 
     def test_models_timezone_str(self):
         timezone_name = random_code(string.ascii_letters, 16)
-        timezone = models.Locale(code=timezone_name)
+        timezone = models.Timezone(name=timezone_name)
         self.assertEqual(str(timezone), timezone_name)
 
     def test_models_translation_str(self):
