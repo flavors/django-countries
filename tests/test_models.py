@@ -50,4 +50,5 @@ class ModelsTests(TestCase):
         locale = models.Locale(code=locale_code)
 
         translation = models.Translation(locale=locale, content=locale)
-        self.assertTrue(str(translation).startswith(str(locale)))
+        # Django 1.9 compatible assert  "None (<locale>)"
+        self.assertTrue(str(translation).strip()[:-2].endswith(str(locale)))
