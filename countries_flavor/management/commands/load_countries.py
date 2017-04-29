@@ -20,10 +20,16 @@ class Command(DumperBaseCommand):
                 fixtures.append(os.path.join(
                     root.split('fixtures/')[1], fixture))
 
+        self.loaddata(fixtures)
+        self.load_borders()
+
+    @classmethod
+    def loaddata(self, fixtures):
         for fixture in sorted(fixtures, key=lambda path: any(
                 f in path for f in ('all/locale', 'divisions', 'names'))):
             call_command('loaddata', fixture)
 
+    def load_borders(self):
         with self.open_fixture('m2m/borders', 'r') as fixture:
             for data in fixture.read():
                 country = models.Country.objects.get(cca2=data.object.pk)
