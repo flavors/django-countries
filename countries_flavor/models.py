@@ -57,7 +57,7 @@ class Country(models.Model):
         on_delete=models.PROTECT,
         verbose_name=_('continent'))
 
-    location = models.PointField()
+    location = models.PointField(null=True)
     mpoly = models.MultiPolygonField(null=True)
 
     region = models.CharField(_('region'), max_length=64)
