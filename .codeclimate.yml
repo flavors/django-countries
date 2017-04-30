@@ -4,7 +4,6 @@ engines:
     enabled: true
     exclude_paths:
     - "**test_*.py"
-    - "**urls.py"
     config:
       languages:
       - python
@@ -17,4 +16,6 @@ ratings:
   - "**.py"
 
 exclude_paths:
+- "**/fixtures/*"
+- "**/locale/*"
 - "**/migrations/*"
