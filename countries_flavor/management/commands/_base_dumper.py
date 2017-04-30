@@ -27,13 +27,13 @@ class TextIOWrapper(object):
 class DumperBaseCommand(BaseCommand):
 
     def __init__(self, *args, **kwargs):
-        self.rootdir = os.path.abspath(os.path.join(os.path.dirname(
+        self._rootdir = os.path.abspath(os.path.join(os.path.dirname(
             os.path.dirname(__file__)), os.pardir, 'fixtures'))
 
         super(DumperBaseCommand, self).__init__(*args, **kwargs)
 
     def get_fixture_path(self, path):
-        return "{path}.json".format(path=os.path.join(self.rootdir, path))
+        return "{path}.json".format(path=os.path.join(self._rootdir, path))
 
     def open_fixture(self, path, mode):
         return TextIOWrapper(self.get_fixture_path(path), mode, 'json')
