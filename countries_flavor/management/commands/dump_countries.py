@@ -1,6 +1,5 @@
 import os
 
-from django.apps import apps
 from django.core.management import call_command
 
 from ...fields import get_first_related_model_field
@@ -9,6 +8,7 @@ from ...fields import get_one_to_many_fields
 from ...fields import get_self_reference_fields
 
 from ... import models
+from ...shortcuts import get_model
 
 from ._base_dumper import DumperBaseCommand
 
@@ -42,10 +42,7 @@ class Command(DumperBaseCommand):
         for fixture in os.listdir(all_dir):
             fixture_path = os.path.join(all_dir, fixture)
             model_name = os.path.splitext(fixture)[0]
-
-            model = apps.get_model(
-                app_label=models.__package__,
-                model_name=model_name)
+            model = get_model(model_name=model_name)
 
             country_field =\
                 get_first_related_model_field(model, models.Country)
