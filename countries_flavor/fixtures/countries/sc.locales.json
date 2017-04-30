@@ -1,0 +1,1 @@
+[{"model": "countries_flavor.locale", "pk": "en_SC", "fields": {"language": "eng", "country": "SC"}}, {"model": "countries_flavor.locale", "pk": "fr_SC", "fields": {"language": "fra", "country": "SC"}}]
