@@ -9,6 +9,7 @@ from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 
 from . import fields
+from . import managers
 
 
 class Continent(models.Model):
@@ -291,6 +292,9 @@ class Locale(models.Model):
         related_name='locales')
 
     translations = GenericRelation('Translation')
+    objects = managers.LocaleManager()
+
+    data = pg_fields.JSONField(null=True)
 
     class Meta:
         ordering = ('code',)
@@ -300,26 +304,19 @@ class Locale(models.Model):
     def __str__(self):
         return self.code
 
+    def __dir__(self):
+        return super(Locale, self).__dir__() + list(self.data.keys())
+
+    def __getattr__(self, attr):
+        if self.data is not None and attr in self.data:
+            return self.data[attr]
+        return super(Locale, self).__getattr__(attr)
+
     @property
     def short_code(self):
         if self.country is not None:
             return self.code[:-3]
         return self.code
-
-    @property
-    def babel(self):
-        import babel
-
-        if self.country is not None:
-            cca2 = self.country.cca2
-        else:
-            cca2 = None
-
-        try:
-            locale = babel.Locale(self.short_code, cca2)
-        except babel.UnknownLocaleError:
-            return None
-        return locale
 
 
 class Timezone(models.Model):
