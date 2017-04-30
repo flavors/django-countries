@@ -24,7 +24,8 @@ class Command(DumperBaseCommand):
             self.dump_country_self_reference(field.name)
 
         # skip self reference field serialize
-        models.Country._meta.many_to_many = get_non_self_reference_fields()
+        models.Country._meta.many_to_many =\
+            get_non_self_reference_fields(models.Country)
 
         for country in models.Country.objects.all():
             self.dump_country(country)
