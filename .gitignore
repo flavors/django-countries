@@ -23,4 +23,3 @@ __pycache__
 /build
 /coverage.xml
 /dist
-/countries_flavor/parsers
