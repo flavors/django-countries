@@ -2,7 +2,7 @@ import string
 from django.test import TestCase
 
 from countries_flavor import models
-from .helpers import random_code
+from .fixtures import random_code
 
 
 class ModelsTests(TestCase):
