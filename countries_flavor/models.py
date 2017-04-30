@@ -291,10 +291,10 @@ class Locale(models.Model):
         verbose_name=_('country'),
         related_name='locales')
 
+    data = pg_fields.JSONField(null=True)
+
     translations = GenericRelation('Translation')
     objects = managers.LocaleManager()
-
-    data = pg_fields.JSONField(null=True)
 
     class Meta:
         ordering = ('code',)

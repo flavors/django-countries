@@ -27,7 +27,7 @@ class CommandsTests(TestCase):
         self.assertTrue(border.cca2, 'FR')
 
     def test_command_load_and_dump_countries(self):
-        call_command('load_countries', verbosity=0)
+        call_command('load_countries', babel=True, verbosity=0)
 
         self.assertTrue(models.Country.objects.exists())
         self.assertTrue(models.CountryName.objects.exists())

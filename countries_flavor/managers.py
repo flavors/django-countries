@@ -1,6 +1,8 @@
 import re
 
 from django.db import models
+
+from .loaddata import load_babel_data
 from .shortcuts import get_model
 
 
@@ -17,3 +19,8 @@ class LocaleManager(models.Manager):
             country = None
 
         return self.create(code=code, language=language, country=country)
+
+    def load_babel_data(self):
+        for locale in self.all():
+            locale.data = load_babel_data(locale)
+            locale.save()
