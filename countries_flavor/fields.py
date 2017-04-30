@@ -3,6 +3,12 @@ from django.core.validators import RegexValidator
 from django.db import models
 
 
+def get_first_related_model_field(model, related_model):
+    return next((
+        field for field in get_many_to_one_fields(model)
+        if field.related_model == related_model), None)
+
+
 def get_many_to_one_fields(model):
     return [
         field for field in model._meta.get_fields()

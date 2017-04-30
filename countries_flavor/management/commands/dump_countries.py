@@ -3,7 +3,7 @@ import os
 from django.apps import apps
 from django.core.management import call_command
 
-from ...fields import get_many_to_one_fields
+from ...fields import get_first_related_model_field
 from ...fields import get_non_self_reference_fields
 from ...fields import get_one_to_many_fields
 from ...fields import get_self_reference_fields
@@ -47,9 +47,8 @@ class Command(DumperBaseCommand):
                 app_label=models.__package__,
                 model_name=model_name)
 
-            country_field = next((
-                field for field in get_many_to_one_fields(model)
-                if field.related_model == models.Country), None)
+            country_field =\
+                get_first_related_model_field(model, models.Country)
 
             if country_field is not None:
                 with self.open_fixture(fixture_path[:-5], 'w') as fixture:
