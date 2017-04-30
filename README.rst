@@ -9,8 +9,8 @@ A Django application that provides a list of countries, timezones, currencies, l
 Dependencies
 ------------
 
-* Django >= 1.9
-* PostGIS database
+* Django ≥ 1.9
+* PostGIS database (PostgreSQL ≥ 9.4)
 
 
 Installation
@@ -78,13 +78,14 @@ Credits
 -------
 
 * Countries: `mledoze/countries <https://github.com/mledoze/countries>`__
-* Country translations `umpirsky/country-list <https://github.com/umpirsky/country-list>`__
-* Locale translations `umpirsky/locale-list <https://github.com/umpirsky/locale-list>`__
-* Currency translations `umpirsky/currency-list <https://github.com/umpirsky/currency-list>`__
+* Locales `Babel <http://babel.pocoo.org>`__
+* Languages ISO 639-1 / ISO 639-3: `Wikipedia <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>`__
 * Currency symbols: `hexorx/currencies <https://github.com/hexorx/currencies>`__
 * Divisions and extra data: `rinvex/country <https://github.com/rinvex/country>`__
 * Timezones: `antonioribeiro/countries <https://github.com/antonioribeiro/countries>`__
-* Languages ISO 639-1 / ISO 639-3: `wikipedia <https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes>`__
+* Country translations `umpirsky/country-list <https://github.com/umpirsky/country-list>`__
+* Locale translations `umpirsky/locale-list <https://github.com/umpirsky/locale-list>`__
+* Currency translations `umpirsky/currency-list <https://github.com/umpirsky/currency-list>`__
 
 
 Demo
