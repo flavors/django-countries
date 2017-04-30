@@ -12,8 +12,8 @@ def get_many_to_one_fields(model):
 
 def get_non_self_reference_fields(model):
     return [
-        field for field in models.Country._meta.many_to_many
-        if field not in get_self_reference_fields()
+        field for field in model._meta.many_to_many
+        if field not in get_self_reference_fields(model)
     ]
 
 
