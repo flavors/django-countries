@@ -1,8 +1,15 @@
 import os
 
+from django.apps import apps
 from django.core.management import call_command
 
+from ...fields import get_many_to_one_fields
+from ...fields import get_non_self_reference_fields
+from ...fields import get_one_to_many_fields
+from ...fields import get_self_reference_fields
+
 from ... import models
+
 from ._base_dumper import DumperBaseCommand
 
 
@@ -11,13 +18,13 @@ class Command(DumperBaseCommand):
 
     def handle(self, **options):
         self.dump_all()
-        self.dump_borders()
+        self_reference_fields = get_self_reference_fields(models.Country)
 
-        # skip borders field serialize
-        models.Country._meta.many_to_many = [
-            field for field in models.Country._meta.many_to_many
-            if field.attname != 'borders'
-        ]
+        for field in self_reference_fields:
+            self.dump_country_self_reference(field.name)
+
+        # skip self reference field serialize
+        models.Country._meta.many_to_many = get_non_self_reference_fields()
 
         for country in models.Country.objects.all():
             self.dump_country(country)
@@ -28,26 +35,48 @@ class Command(DumperBaseCommand):
         call_command('dumpdata', model, '--output', path)
 
     def dump_all(self):
-        all_dir = os.path.join(self.rootdir, 'all')
+        all_dir = os.path.join(self._rootdir, 'all')
 
         for fixture in os.listdir(all_dir):
-            model = os.path.splitext(fixture)[0]
-            self.dumpdata(model, os.path.join(all_dir, fixture))
+            fixture_path = os.path.join(all_dir, fixture)
+            model_name = os.path.splitext(fixture)[0]
 
-    def dump_borders(self):
-        with self.open_fixture('m2m/borders', 'w') as fixture:
-            fixture.write(models.Country.objects.all(), fields=('borders',))
+            model = apps.get_model(
+                app_label=models.__package__,
+                model_name=model_name)
+
+            country_field = next((
+                field for field in get_many_to_one_fields(model)
+                if field.related_model == models.Country), None)
+
+            if country_field is not None:
+                with self.open_fixture(fixture_path[:-5], 'w') as fixture:
+                    fixture.write(model.objects.filter(**{
+                        "{}__isnull".format(country_field.name): True}))
+            else:
+                self.dumpdata(model_name, fixture_path)
+
+    def get_country_path(self, country, name):
+        return "countries/{cca2}.{name}".format(
+            cca2=country.cca2.lower(),
+            name=name)
+
+    def dump_country_self_reference(self, name):
+        with self.open_fixture("self/{}".format(name), 'w') as fixture:
+            fixture.write(models.Country.objects.all(), fields=(name,))
+
+    def dump_country_one_to_many(self, country, name):
+        manager = getattr(country, name)
+        path = self.get_country_path(country, name)
+
+        if manager.exists():
+            with self.open_fixture(path, 'w') as fixture:
+                fixture.write(manager.all())
 
     def dump_country(self, country):
-        path = "countries/{cca2}.geo".format(cca2=country.cca2.lower())
-
+        path = self.get_country_path(country, 'geo')
         with self.open_fixture(path, 'w') as fixture:
             fixture.write([country])
 
-        for related_field in ('divisions', 'names'):
-            related_manager = getattr(country, related_field)
-
-            if related_manager.exists():
-                related_path = path.replace('geo', related_field)
-                with self.open_fixture(related_path, 'w') as fixture:
-                    fixture.write(related_manager.all())
+        for related_name in get_one_to_many_fields(models.Country):
+            self.dump_country_one_to_many(country, related_name.name)
