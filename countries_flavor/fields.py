@@ -1,5 +1,36 @@
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.validators import RegexValidator
 from django.db import models
+
+
+def get_many_to_one_fields(model):
+    return [
+        field for field in model._meta.get_fields()
+        if field.is_relation and field.many_to_one
+    ]
+
+
+def get_non_self_reference_fields(model):
+    return [
+        field for field in models.Country._meta.many_to_many
+        if field not in get_self_reference_fields()
+    ]
+
+
+def get_one_to_many_fields(model):
+    return [
+        field for field in model._meta.get_fields()
+        if field.is_relation and
+        field.one_to_many and
+        not isinstance(field, GenericRelation)
+    ]
+
+
+def get_self_reference_fields(model):
+    return [
+        field for field in model._meta.get_fields()
+        if field.is_relation and field.related_model == model
+    ]
 
 
 class CodeISOField(models.CharField):
