@@ -1,5 +1,3 @@
-import os
-
 from django.core.management import call_command
 
 from ...fields import get_one_to_many_fields
@@ -22,17 +20,8 @@ class Command(DumperBaseCommand):
 
     def handle(self, **options):
         self.verbosity = options['verbosity']
-        fixtures = []
 
-        for root, dirs, files in os.walk(self._rootdir, topdown=True):
-            if 'self' in dirs:
-                dirs.remove('self')
-
-            for fixture in files:
-                fixtures.append(os.path.join(
-                    root.split('fixtures/')[1], fixture))
-
-        self.load_all(fixtures)
+        self.load_all()
 
         for field in get_self_reference_fields(models.Country):
             self.load_country_self_reference(field.name)
@@ -44,13 +33,14 @@ class Command(DumperBaseCommand):
         if not self.is_excluded(fixture_path):
             call_command('loaddata', fixture_path, verbosity=self.verbosity)
 
-    def load_all(self, fixtures):
+    def load_all(self):
         one_to_many_fields = [
             field.name for field in get_one_to_many_fields(models.Country)
         ]
 
-        for fixture_path in sorted(fixtures, key=lambda path: any(
-                field in path for field in one_to_many_fields)):
+        for fixture_path in sorted(
+                self.get_fixtures(),
+                key=lambda path: any(f in path for f in one_to_many_fields)):
 
             self.loaddata(fixture_path)
 

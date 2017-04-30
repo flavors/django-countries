@@ -46,6 +46,19 @@ class DumperBaseCommand(BaseCommand):
 
         super(DumperBaseCommand, self).__init__(*args, **kwargs)
 
+    def get_fixtures(self):
+        fixtures = []
+
+        for root, dirs, files in os.walk(self._rootdir, topdown=True):
+            # Exclude self references
+            if 'self' in dirs:
+                dirs.remove('self')
+
+            for fixture in files:
+                fixtures.append(os.path.join(
+                    root.split('fixtures/')[1], fixture))
+        return fixtures
+
     def get_fixture_path(self, path):
         return "{path}.json".format(path=os.path.join(self._rootdir, path))
 
