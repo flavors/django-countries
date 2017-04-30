@@ -30,7 +30,7 @@ class CommandsTests(TestCase):
         call_command('collect_trans')
 
     def test_command_load_and_dump_countries(self):
-        call_command('load_countries')
+        call_command('load_countries', verbosity=0)
 
         self.assertTrue(models.Country.objects.exists())
         self.assertTrue(models.CountryName.objects.exists())
@@ -41,4 +41,4 @@ class CommandsTests(TestCase):
         self.assertTrue(models.Timezone.objects.exists())
         # self.assertTrue(models.Translation.objects.exists())
 
-        call_command('dump_countries')
+        call_command('dump_countries', verbosity=0)

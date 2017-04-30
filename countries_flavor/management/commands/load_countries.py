@@ -13,6 +13,7 @@ class Command(DumperBaseCommand):
     help = 'Load fixtures'
 
     def handle(self, **options):
+        self.verbosity = options['verbosity']
         fixtures = []
 
         for root, dirs, files in os.walk(self._rootdir, topdown=True):
@@ -28,7 +29,6 @@ class Command(DumperBaseCommand):
         for field in get_self_reference_fields(models.Country):
             self.load_country_self_reference(field.name)
 
-    @classmethod
     def loaddata(self, fixtures):
         one_to_many_fields = [
             field.name for field in get_one_to_many_fields(models.Country)
@@ -37,7 +37,7 @@ class Command(DumperBaseCommand):
         for fixture in sorted(fixtures, key=lambda path: any(
                 field in path for field in one_to_many_fields)):
 
-            call_command('loaddata', fixture)
+            call_command('loaddata', fixture, verbosity=self.verbosity)
 
     def load_country_self_reference(self, name):
         with self.open_fixture("self/{}".format(name), 'r') as fixture:

@@ -17,6 +17,8 @@ class Command(DumperBaseCommand):
     help = 'Dump all data'
 
     def handle(self, **options):
+        self.verbosity = options['verbosity']
+
         self.dump_all()
         self_reference_fields = get_self_reference_fields(models.Country)
 
@@ -30,10 +32,9 @@ class Command(DumperBaseCommand):
         for country in models.Country.objects.all():
             self.dump_country(country)
 
-    @classmethod
-    def dumpdata(cls, model_name, path):
+    def dumpdata(self, model_name, path):
         model = "countries_flavor.{model}".format(model=model_name)
-        call_command('dumpdata', model, '--output', path)
+        call_command('dumpdata', model, output=path, verbosity=self.verbosity)
 
     def dump_all(self):
         all_dir = os.path.join(self._rootdir, 'all')
