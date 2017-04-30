@@ -272,8 +272,6 @@ class Language(models.Model):
 
 
 class Locale(models.Model):
-    # T O D O manager: re.compile(r'.*_([A-Z]{2})$')
-
     code = models.CharField(
         _('code'),
         max_length=16,
@@ -301,6 +299,27 @@ class Locale(models.Model):
 
     def __str__(self):
         return self.code
+
+    @property
+    def short_code(self):
+        if self.country is not None:
+            return self.code[:-3]
+        return self.code
+
+    @property
+    def babel(self):
+        import babel
+
+        if self.country is not None:
+            cca2 = self.country.cca2
+        else:
+            cca2 = None
+
+        try:
+            locale = babel.Locale(self.short_code, cca2)
+        except babel.UnknownLocaleError:
+            return None
+        return locale
 
 
 class Timezone(models.Model):
