@@ -14,7 +14,11 @@ from ._base_dumper import DumperBaseCommand
 
 
 class Command(DumperBaseCommand):
-    help = 'Dump all data'
+    help = 'Dump data'
+
+    exclude_fixtures = (
+        r'.*all/locale',
+        r'.*countries/[a-z]{2}.locales')
 
     def handle(self, **options):
         self.verbosity = options['verbosity']
@@ -32,9 +36,14 @@ class Command(DumperBaseCommand):
         for country in models.Country.objects.all():
             self.dump_country(country)
 
-    def dumpdata(self, model_name, path):
-        model = "countries_flavor.{model}".format(model=model_name)
-        call_command('dumpdata', model, output=path, verbosity=self.verbosity)
+    def dumpdata(self, model_name, fixture_path):
+        if not self.is_excluded(fixture_path):
+            model_name = "countries_flavor.{model}".format(model=model_name)
+            call_command(
+                'dumpdata',
+                model_name,
+                output=fixture_path,
+                verbosity=self.verbosity)
 
     def dump_all(self):
         all_dir = os.path.join(self._rootdir, 'all')
@@ -48,16 +57,12 @@ class Command(DumperBaseCommand):
                 get_first_related_model_field(model, models.Country)
 
             if country_field is not None:
+                # Country FK is none
                 with self.open_fixture(fixture_path[:-5], 'w') as fixture:
                     fixture.write(model.objects.filter(**{
                         "{}__isnull".format(country_field.name): True}))
             else:
                 self.dumpdata(model_name, fixture_path)
-
-    def get_country_path(self, country, name):
-        return "countries/{cca2}.{name}".format(
-            cca2=country.cca2.lower(),
-            name=name)
 
     def dump_country_self_reference(self, name):
         with self.open_fixture("self/{}".format(name), 'w') as fixture:

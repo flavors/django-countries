@@ -10,7 +10,15 @@ from ._base_dumper import DumperBaseCommand
 
 
 class Command(DumperBaseCommand):
-    help = 'Load fixtures'
+    help = 'Load data'
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--babel', '-b',
+            dest='babel',
+            action='store_true',
+            default=False,
+            help='Load babel data.')
 
     def handle(self, **options):
         self.verbosity = options['verbosity']
@@ -24,20 +32,27 @@ class Command(DumperBaseCommand):
                 fixtures.append(os.path.join(
                     root.split('fixtures/')[1], fixture))
 
-        self.loaddata(fixtures)
+        self.load_all(fixtures)
 
         for field in get_self_reference_fields(models.Country):
             self.load_country_self_reference(field.name)
 
-    def loaddata(self, fixtures):
+        if options['babel']:
+            models.Locale.objects.load_babel_data()
+
+    def loaddata(self, fixture_path):
+        if not self.is_excluded(fixture_path):
+            call_command('loaddata', fixture_path, verbosity=self.verbosity)
+
+    def load_all(self, fixtures):
         one_to_many_fields = [
             field.name for field in get_one_to_many_fields(models.Country)
         ]
 
-        for fixture in sorted(fixtures, key=lambda path: any(
+        for fixture_path in sorted(fixtures, key=lambda path: any(
                 field in path for field in one_to_many_fields)):
 
-            call_command('loaddata', fixture, verbosity=self.verbosity)
+            self.loaddata(fixture_path)
 
     def load_country_self_reference(self, name):
         with self.open_fixture("self/{}".format(name), 'r') as fixture:
