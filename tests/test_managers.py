@@ -12,10 +12,11 @@ class ManagersTests(TestCase):
     def test_managers_create_locale(self):
         country, _ = get_or_create_country()
 
-        language_code = random_code(string.ascii_lowercase, 3)
-        language = models.Language(cla3=language_code)
+        language = models.Language.objects.create(
+            cla2=random_code(string.ascii_lowercase, 2)
+        )
 
-        locale_code = "{}_{}".format(language_code, country.cca2)
+        locale_code = "{}_{}".format(language.cla2, country.cca2)
         locale = models.Locale.objects.create_locale(code=locale_code)
 
         self.assertEqual(locale.country, country)
