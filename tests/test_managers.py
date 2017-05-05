@@ -9,6 +9,19 @@ from .fixtures import random_code
 
 class ManagersTests(TestCase):
 
+    def test_managers_qs_short_code(self):
+        language = models.Language.objects.create(
+            cla2=random_code(string.ascii_lowercase, 2)
+        )
+
+        locale = models.Locale.objects.create(
+            code=language.cla2,
+            language=language)
+
+        self.assertEqual(
+            locale,
+            models.Locale.objects.get(short_code=language.cla2))
+
     def test_managers_create_locale(self):
         language = models.Language.objects.create(
             cla2=random_code(string.ascii_lowercase, 2)
