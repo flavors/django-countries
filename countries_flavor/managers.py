@@ -2,11 +2,14 @@ import re
 
 from django.db import models
 
-from .loaddata import load_babel_data
+from .loaddata import load_babel
 from .shortcuts import get_model
 
 
-class LocaleManager(models.Manager):
+__all__ = ['LocaleManager']
+
+
+class BaseLocaleManager(models.Manager):
 
     def create_locale(self, code, regex=re.compile(r'.*_([A-Z]{2})$')):
         language = get_model('language').objects.get(cla2=code[:2])
@@ -20,7 +23,17 @@ class LocaleManager(models.Manager):
 
         return self.create(code=code, language=language, country=country)
 
-    def load_babel_data(self):
-        for locale in self.all():
-            locale.data = load_babel_data(locale)
-            locale.save()
+    def load_babel(self):
+        for obj in self.all():
+            load_babel(obj)
+
+
+class LocaleQuerySet(models.QuerySet):
+
+    def get(self, **kwargs):
+        if 'short_code' in kwargs:
+            kwargs['language__cla2'] = kwargs.pop('short_code')
+        return super(LocaleQuerySet, self).get(**kwargs)
+
+
+LocaleManager = BaseLocaleManager.from_queryset(LocaleQuerySet)
