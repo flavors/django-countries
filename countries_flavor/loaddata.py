@@ -6,7 +6,7 @@ from babel.plural import PluralRule
 from .shortcuts import get_babel
 from . import models
 
-__all__ = ['load_babel']
+__all__ = ['load_babel', 'load_translations']
 
 
 class BaseParser(object):
@@ -54,15 +54,19 @@ def load_babel(locale, translations=False):
         locale.save()
 
         if translations:
-            for code, name in data['territories'].items():
-                try:
-                    country = models.Country.objects.get(cca2=code)
-                except models.Country.DoesNotExist:
-                    continue
+            load_translations(locale, data)
 
-                translate = models.Translation(
-                    content=country,
-                    locale=locale,
-                    text=name)
 
-                translate.save()
+def load_translations(locale, data):
+    for code, name in data['territories'].items():
+        try:
+            country = models.Country.objects.get(cca2=code)
+        except models.Country.DoesNotExist:
+            continue
+
+        translate = models.Translation(
+            content=country,
+            locale=locale,
+            text=name)
+
+        translate.save()
