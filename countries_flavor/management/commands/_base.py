@@ -5,6 +5,9 @@ from django.core import serializers
 from django.core.management.base import BaseCommand
 
 
+__all__ = ['DumperBaseCommand']
+
+
 class TextIOWrapper(object):
 
     def __init__(self, path, mode, format, is_fake=False):
@@ -38,11 +41,9 @@ class DumperBaseCommand(BaseCommand):
     exclude_fixtures = tuple()
 
     def __init__(self, *args, **kwargs):
+        self._exclude_patterns = list(map(re.compile, self.exclude_fixtures))
         self._rootdir = os.path.abspath(os.path.join(os.path.dirname(
             os.path.dirname(__file__)), os.pardir, 'fixtures'))
-
-        self._exclude_patterns =\
-            list(map(re.compile, list(self.exclude_fixtures)))
 
         super(DumperBaseCommand, self).__init__(*args, **kwargs)
 

@@ -10,7 +10,7 @@ from ...fields import get_self_reference_fields
 from ... import models
 from ...shortcuts import get_model
 
-from ._base_dumper import DumperBaseCommand
+from ._base import DumperBaseCommand
 
 
 class Command(DumperBaseCommand):

@@ -4,7 +4,7 @@ from ...fields import get_one_to_many_fields
 from ...fields import get_self_reference_fields
 from ... import models
 
-from ._base_dumper import DumperBaseCommand
+from ._base import DumperBaseCommand
 
 
 class Command(DumperBaseCommand):
@@ -18,6 +18,13 @@ class Command(DumperBaseCommand):
             default=False,
             help='Load babel data.')
 
+        parser.add_argument(
+            '--translations', '-b',
+            dest='translations',
+            action='store_true',
+            default=False,
+            help='Load translations data.')
+
     def handle(self, **options):
         self.verbosity = options['verbosity']
 
@@ -27,7 +34,7 @@ class Command(DumperBaseCommand):
             self.load_country_self_reference(field.name)
 
         if options['babel']:
-            models.Locale.objects.load_babel_data()
+            models.Locale.objects.load_babel(options['translations'])
 
     def loaddata(self, fixture_path):
         if not self.is_excluded(fixture_path):
