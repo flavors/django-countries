@@ -1,7 +1,7 @@
 Django Countries Flavor
 =======================
 
-|Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
+|Docs| |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
 A Django application that provides a data collection for internationalization and localization purposes.
 
@@ -67,12 +67,6 @@ Standards ISO
 * Language `ISO 639-3 <https://en.wikipedia.org/wiki/ISO_639-3>`__
 
 
-Not found!
-----------
-
-* Country ISO 3166-1: DG, SH, EA, IC, BQ
-* Language ISO 639-1: sh
-
 Credits
 -------
 
@@ -82,15 +76,10 @@ Credits
 * Currency symbols: `hexorx/currencies <https://github.com/hexorx/currencies>`__
 * Divisions and extra data: `rinvex/country <https://github.com/rinvex/country>`__
 * Timezones: `antonioribeiro/countries <https://github.com/antonioribeiro/countries>`__
-* Country translations `umpirsky/country-list <https://github.com/umpirsky/country-list>`__
-* Locale translations `umpirsky/locale-list <https://github.com/umpirsky/locale-list>`__
-* Currency translations `umpirsky/currency-list <https://github.com/umpirsky/currency-list>`__
 
 
-Demo
-----
-
-Demo is **NOT** available at `api.domake.io/countries <http://api.domake.io/countries>`__
+.. |Docs| image:: https://readthedocs.org/projects/countries-flavor/badge/?version=latest
+   :target: http://countries-flavor.readthedocs.io/en/latest/?badge=latest
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/countries-flavor.svg
    :target: https://pypi.python.org/pypi/countries-flavor
