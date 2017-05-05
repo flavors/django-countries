@@ -316,7 +316,9 @@ class Locale(models.Model):
         return super(Locale, self).__dir__() + list(self.data.keys())
 
     def __getattr__(self, attr):
-        if self.data is not None and attr in self.data:
+        if not attr.startswirh('_') and\
+                self.data is not None and\
+                attr in self.data:
             return self.data[attr]
         return super(Locale, self).__getattr__(attr)
 
