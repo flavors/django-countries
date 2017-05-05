@@ -1,3 +1,6 @@
+import datetime
+import pytz
+
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
@@ -6,6 +9,7 @@ from django.contrib.gis.db import models
 from django.contrib.postgres import fields as pg_fields
 
 from django.core.validators import RegexValidator
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 from . import fields
@@ -155,6 +159,10 @@ class Country(models.Model):
 
     def __str__(self):
         return self.cca2
+
+    @property
+    def native_names(self):
+        return self.names.filter(language__in=self.languages.all())
 
 
 class CountryName(models.Model):
@@ -332,6 +340,22 @@ class Timezone(models.Model):
 
     def __str__(self):
         return self.name
+
+    def activate(self):
+        timezone.activate(self.pytz)
+
+    def astimezone(self, localtime):
+        return localtime.astimezone(self.pytz)
+
+    def localize(self, date_time, **kwargs):
+        return self.pytz.localize(date_time, **kwargs)
+
+    def now(self):
+        return datetime.datetime.now(self.pytz)
+
+    @property
+    def pytz(self):
+        return pytz.timezone(self.name)
 
 
 class Translation(models.Model):
