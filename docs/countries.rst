@@ -1,9 +1,6 @@
 Countries
 =========
 
-Getting the code
-----------------
-
 For example, we could look up the Country:
 
     >>> country = Country.objects.get(cca2='ID')

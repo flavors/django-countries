@@ -1,14 +1,13 @@
 Timezones
 =========
 
-Quick start
------------
-
 Retrieve timezones by country:
 
     >>> country = Country.objects.get(cca2='ID')
     >>> country.timezones.all()
     <QuerySet [<Timezone: Asia/Jakarta>, <Timezone: Asia/Jayapura>, <Timezone: Asia/Makassar>, <Timezone: Asia/Pontianak>]>
+
+    >>> timezone = country.timezones.get(name='Asia/Makassar')
 
 
 Use the use the ``localize()`` method to localize a naive datetime (datetime with no timezone information): 

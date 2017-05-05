@@ -4,7 +4,7 @@ Setup
 Installation
 ------------
 
-The recommended way to install the Countries Flavor is via pip_::
+The recommended way to install the Countries Flavor is via pip:
 
     pip install countries-flavor
 
@@ -24,6 +24,10 @@ Dependencies
 .. _Django: http://www.djangoproject.com/
 
 
+.. warning::
+
+    Postgis database is required
+
 
 URLconf
 -------
@@ -36,3 +40,11 @@ Add the countries-flavor URLs to your project's URLconf as follows::
     urlpatterns = [
         url(r'^', include('countries_flavor.rest_framework.urls')
     ]
+
+
+Loaddata
+--------
+
+The ``load_countries`` management command loads all fixtures into the database.
+
+    python manage.py load_countries --babel
