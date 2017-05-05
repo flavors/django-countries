@@ -48,14 +48,14 @@ Apply migrations.
     python manage.py migrate
 
 
-Collect data
-------------
+Load data
+---------
 
 The ``load_countries`` management command loads all `fixtures <countries_flavor/fixtures>`__ into the database.
 
 .. code:: sh
 
-    python manage.py load_countries
+    python manage.py load_countries  --babel
 
 
 Standards ISO
