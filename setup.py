@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 
 def get_long_description():
-    for filename in ('README.rst', 'docs/changes.rst'):
+    for filename in ('README.rst',):
         with open(filename, 'r') as f:
             yield f.read()
 
