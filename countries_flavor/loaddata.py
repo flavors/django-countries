@@ -4,12 +4,15 @@ from babel.numbers import NumberPattern
 from babel.plural import PluralRule
 
 from .shortcuts import get_babel
+from . import models
+
+__all__ = ['load_babel']
 
 
 class BaseParser(object):
 
     def default(self, obj):
-        return obj
+        raise NotImplementedError('.default(obj) must be implemented')
 
     def parse(self, obj):
         if isinstance(obj, dict):
@@ -31,7 +34,7 @@ class BabelParser(BaseParser):
         return obj
 
 
-def load_babel_data(locale):
+def load_babel(locale, translations=False):
     translation_fields = [
         'currency_names',
         'currency_names_plural',
@@ -42,8 +45,24 @@ def load_babel_data(locale):
     babel_obj = get_babel(locale)
 
     if babel_obj is not None:
-        locale_data = BabelParser().parse(babel_obj._data.base)
-        return {
-            key: value for key, value in locale_data.items()
+        data = BabelParser().parse(babel_obj._data.base)
+        locale.data = {
+            key: value for key, value in data.items()
             if key not in translation_fields
         }
+
+        locale.save()
+
+        if translations:
+            for code, name in data['territories'].items():
+                try:
+                    country = models.Country.objects.get(cca2=code)
+                except models.Country.DoesNotExist:
+                    continue
+
+                translate = models.Translation(
+                    content=country,
+                    locale=locale,
+                    text=name)
+
+                translate.save()
