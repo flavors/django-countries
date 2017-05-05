@@ -23,9 +23,9 @@ class BaseLocaleManager(models.Manager):
 
         return self.create(code=code, language=language, country=country)
 
-    def load_babel(self):
+    def load_babel(self, translations=False):
         for obj in self.all():
-            load_babel(obj)
+            load_babel(locale=obj, translations=translations)
 
 
 class LocaleQuerySet(models.QuerySet):
