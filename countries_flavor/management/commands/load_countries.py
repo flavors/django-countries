@@ -19,7 +19,7 @@ class Command(DumperBaseCommand):
             help='Load babel data.')
 
         parser.add_argument(
-            '--translations', '-b',
+            '--translations', '-t',
             dest='translations',
             action='store_true',
             default=False,
