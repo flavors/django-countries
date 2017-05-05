@@ -4,7 +4,7 @@ from babel.numbers import NumberPattern
 from babel.plural import PluralRule
 
 from .shortcuts import get_babel
-from . import models
+from .shortcuts import get_model
 
 __all__ = ['load_babel', 'load_translations']
 
@@ -58,13 +58,15 @@ def load_babel(locale, translations=False):
 
 
 def load_translations(locale, data):
+    Country = get_model('country')
+
     for code, name in data['territories'].items():
         try:
-            country = models.Country.objects.get(cca2=code)
-        except models.Country.DoesNotExist:
+            country = Country.objects.get(cca2=code)
+        except Country.DoesNotExist:
             continue
 
-        translate = models.Translation(
+        translate = get_model('translation')(
             content=country,
             locale=locale,
             text=name)
