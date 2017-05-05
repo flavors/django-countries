@@ -64,5 +64,5 @@ class TimezoneAdmin(admin.ModelAdmin):
 @admin.register(models.Translation)
 class TranslationAdmin(admin.ModelAdmin):
     list_display = ('content_type',  'object_id', 'locale', 'text')
-    list_filter = ('content_type',  'object_id', 'locale', 'text')
-    search_fields = ('text',)
+    list_filter = ('content_type',  'text')
+    search_fields = ('locale__code', 'text')
