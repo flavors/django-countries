@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 
 def get_long_description():
-    for filename in ('README.rst', 'HISTORY.rst'):
+    for filename in ('README.rst', 'docs/changes.rst'):
         with open(filename, 'r') as f:
             yield f.read()
 
@@ -20,8 +20,8 @@ setup(
     name='countries-flavor',
     version=get_version('countries_flavor'),
     license='MIT',
-    description='A Django application that provides a list of '
-    'countries, timezones, currencies, languages and locales.',
+    description='A Django application that provides a data collection '
+    'for internationalization and localization purposes.',
     long_description='\n\n'.join(get_long_description()),
     author='mongkok',
     author_email='dani.pyc@gmail.com',

@@ -3,8 +3,7 @@ Django Countries Flavor
 
 |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
-A Django application that provides a list of countries, timezones, currencies, languages, locales and translations.
-
+A Django application that provides a data collection for internationalization and localization purposes.
 
 Dependencies
 ------------
