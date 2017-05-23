@@ -8,6 +8,7 @@ from countries_flavor import models
 class MockRequest:
     pass
 
+
 request = MockRequest()
 
 
