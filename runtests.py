@@ -22,9 +22,9 @@ DEFAULT_SETTINGS = dict(
     DATABASES={
         'default': {
             'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'NAME': os.environ['DB_NAME'],
-            'USER': os.environ.get('DB_USER', 'postgres'),
-            'PASSWORD': os.environ.get('DB_PASSWORD', '')
+            'NAME': os.environ['POSTGRES_DB_NAME'],
+            'USER': os.environ.get('POSTGRES_DB_USER', 'postgres'),
+            'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD', '')
         }
     },
     ROOT_URLCONF='tests.urls',
