@@ -315,12 +315,13 @@ class Locale(models.Model):
     def __dir__(self):
         return super(Locale, self).__dir__() + list(self.data.keys())
 
-    def __getattr__(self, attr):
-        if not attr.startswirh('_') and\
-                self.data is not None and\
-                attr in self.data:
-            return self.data[attr]
-        return super(Locale, self).__getattr__(attr)
+    def __getattribute__(self, attr):
+        try:
+            return super(Locale, self).__getattribute__(attr)
+        except AttributeError:
+            if self.data is not None and attr in self.data:
+                return self.data[attr]
+            raise
 
     @property
     def short_code(self):
