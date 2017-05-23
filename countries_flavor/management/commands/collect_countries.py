@@ -26,7 +26,8 @@ class Command(BaseCommand):
         if country_codes is not None:
             countries = [
                 country for country in countries
-                if country['cca2'] in country_codes.split(',')]
+                if country['cca2'] in country_codes.split(',')
+            ]
 
         for data in countries:
             country, _ = self.update_or_create_country(data)
@@ -45,10 +46,11 @@ class Command(BaseCommand):
 
         self.add_borders(countries)
 
-        self.stdout.write("\nInstalled {count} object(s) from {url}".format(
-            count=len(countries),
-            url=self.endpoint(countries_path)
-        ))
+        self.stdout.write(
+            "\nInstalled {count} object(s) from {url}".format(
+                count=len(countries),
+                url=self.endpoint(countries_path)
+            ))
 
     @classmethod
     def endpoint(cls, path):

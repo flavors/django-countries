@@ -39,6 +39,7 @@ class Command(DumperBaseCommand):
     def dumpdata(self, model_name, fixture_path):
         if not self.is_excluded(fixture_path):
             model_name = "countries_flavor.{model}".format(model=model_name)
+
             call_command(
                 'dumpdata',
                 model_name,
@@ -59,8 +60,11 @@ class Command(DumperBaseCommand):
             if country_field is not None:
                 # Country FK is none
                 with self.open_fixture(fixture_path[:-5], 'w') as fixture:
-                    fixture.write(model.objects.filter(**{
-                        "{}__isnull".format(country_field.name): True}))
+                    fixture.write(
+                        model.objects.filter(**{
+                            "{}__isnull".format(country_field.name): True
+                        })
+                    )
             else:
                 self.dumpdata(model_name, fixture_path)
 

@@ -42,8 +42,12 @@ class DumperBaseCommand(BaseCommand):
 
     def __init__(self, *args, **kwargs):
         self._exclude_patterns = list(map(re.compile, self.exclude_fixtures))
-        self._rootdir = os.path.abspath(os.path.join(os.path.dirname(
-            os.path.dirname(__file__)), os.pardir, 'fixtures'))
+        self._rootdir = os.path.abspath(
+            os.path.join(
+                os.path.dirname(os.path.dirname(__file__)),
+                os.pardir, 'fixtures'
+            )
+        )
 
         super(DumperBaseCommand, self).__init__(*args, **kwargs)
 
@@ -57,7 +61,8 @@ class DumperBaseCommand(BaseCommand):
 
             for fixture in files:
                 fixtures.append(os.path.join(
-                    root.split('fixtures/')[1], fixture))
+                    root.split('fixtures/')[1], fixture)
+                )
         return fixtures
 
     def get_fixture_path(self, path):
