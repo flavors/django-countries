@@ -319,7 +319,9 @@ class Locale(models.Model):
         try:
             return super().__getattribute__(attr)
         except AttributeError:
-            if self.data is not None and attr in self.data:
+            if not attr.startswith('_') and\
+                    self.data is not None and\
+                    attr in self.data:
                 return self.data[attr]
             raise
 
