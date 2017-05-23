@@ -1,7 +1,6 @@
 import random
 import string
 
-
 from django.contrib.gis import geos
 from countries_flavor import models
 

@@ -1,7 +1,8 @@
 import string
-from django.test import TestCase
 
+from django.test import TestCase
 from countries_flavor import models
+
 from .fixtures import random_code
 
 
