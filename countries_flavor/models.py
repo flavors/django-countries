@@ -313,11 +313,11 @@ class Locale(models.Model):
         return self.code
 
     def __dir__(self):
-        return super(Locale, self).__dir__() + list(self.data.keys())
+        return super().__dir__() + list(self.data.keys())
 
     def __getattribute__(self, attr):
         try:
-            return super(Locale, self).__getattribute__(attr)
+            return super().__getattribute__(attr)
         except AttributeError:
             if self.data is not None and attr in self.data:
                 return self.data[attr]

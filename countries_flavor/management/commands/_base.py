@@ -49,7 +49,7 @@ class DumperBaseCommand(BaseCommand):
             )
         )
 
-        super(DumperBaseCommand, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def get_fixtures(self):
         fixtures = []

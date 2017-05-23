@@ -33,7 +33,7 @@ class LocaleQuerySet(models.QuerySet):
     def get(self, **kwargs):
         if 'short_code' in kwargs:
             kwargs['language__cla2'] = kwargs.pop('short_code')
-        return super(LocaleQuerySet, self).get(**kwargs)
+        return super().get(**kwargs)
 
 
 LocaleManager = BaseLocaleManager.from_queryset(LocaleQuerySet)

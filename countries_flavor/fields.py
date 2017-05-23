@@ -55,10 +55,10 @@ class CodeISOField(models.CharField):
             )]
         })
 
-        super(CodeISOField, self).__init__(verbose_name, *args, **kwargs)
+        super().__init__(verbose_name, *args, **kwargs)
 
     def deconstruct(self):
-        name, path, args, kwargs = super(CodeISOField, self).deconstruct()
+        name, path, args, kwargs = super().deconstruct()
         kwargs['length'] = self.length
         kwargs['regex'] = self.regex
         return name, path, args, kwargs
