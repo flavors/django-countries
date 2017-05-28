@@ -72,15 +72,11 @@ class LanguageFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ('cla3',)
 
 
-class LanguageCountryMixin(object):
+class LocaleFactory(factory.django.DjangoModelFactory):
+    code = factory.fuzzy.FuzzyText(length=16)
+
     country = factory.SubFactory(CountryFactory)
     language = factory.SubFactory(LanguageFactory)
-
-
-class LocaleFactory(LanguageCountryMixin,
-                    factory.django.DjangoModelFactory):
-
-    code = factory.fuzzy.FuzzyText(length=16)
 
     class Meta:
         model = 'countries_flavor.Locale'
@@ -95,10 +91,11 @@ class TimezoneFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ('name',)
 
 
-class CountryNameFactory(LanguageCountryMixin,
-                         factory.django.DjangoModelFactory):
-
+class CountryNameFactory(factory.django.DjangoModelFactory):
     common = factory.fuzzy.FuzzyText(length=32)
+
+    country = factory.SubFactory(CountryFactory)
+    language = factory.SubFactory(LanguageFactory)
 
     class Meta:
         model = 'countries_flavor.CountryName'
