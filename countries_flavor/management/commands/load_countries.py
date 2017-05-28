@@ -40,7 +40,11 @@ class Command(DumperBaseCommand):
 
     def loaddata(self, fixture_path):
         if not self.is_excluded(fixture_path):
-            call_command('loaddata', fixture_path, verbosity=self.verbosity)
+            call_command(
+                'loaddata',
+                fixture_path.as_posix(),
+                verbosity=self.verbosity
+            )
 
     def get_fixtures(self, **kwargs):
         return sorted([
