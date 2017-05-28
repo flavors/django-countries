@@ -1,55 +1,47 @@
-import string
-
 from django.test import TestCase
-from countries_flavor import models
-
-from .fixtures import random_code
+from countries_flavor import factories
 
 
 class ModelsTests(TestCase):
 
     def test_models_continent_str(self):
-        continent_code = random_code(string.ascii_uppercase, 3)
-        continent = models.Continent(code=continent_code)
-        self.assertEqual(str(continent), continent_code)
+        continent = factories.ContinentFactory()
+        self.assertEqual(str(continent), continent.code)
 
     def test_models_countries_str(self):
-        country_cca2 = random_code(string.ascii_uppercase, 2)
-        country = models.Country(cca2=country_cca2)
-        self.assertEqual(str(country), country_cca2)
+        country = factories.CountryFactory()
+        self.assertEqual(str(country), country.cca2)
 
-        language_code = random_code(string.ascii_lowercase, 3)
-        language = models.Language(cla3=language_code)
-        self.assertEqual(str(language), language_code)
+    def test_models_language_str(self):
+        language = factories.LanguageFactory()
+        self.assertEqual(str(language), language.cla3)
 
-        country_name = models.CountryName(
-            country=country,
-            language=language)
+    def test_models_country_name_str(self):
+        country_name = factories.CountryNameFactory()
 
-        self.assertTrue(str(country_name).startswith(country_cca2))
+        self.assertTrue(
+            str(country_name).startswith(country_name.country.cca2)
+        )
 
-        division = models.Division(country=country)
-        self.assertTrue(str(division).startswith(country_cca2))
+    def test_models_division_str(self):
+        division = factories.DivisionFactory()
+        self.assertTrue(str(division).startswith(division.country.cca2))
 
     def test_models_currency_str(self):
-        currency_code = random_code(string.ascii_uppercase, 3)
-        currency = models.Currency(code=currency_code)
-        self.assertEqual(str(currency), currency_code)
+        currency = factories.CurrencyFactory()
+        self.assertEqual(str(currency), currency.code)
 
     def test_models_locale_str(self):
-        locale_code = random_code(string.ascii_letters, 2)
-        locale = models.Locale(code=locale_code)
-        self.assertEqual(str(locale), locale_code)
+        locale = factories.LocaleFactory()
+        self.assertEqual(str(locale), locale.code)
 
     def test_models_timezone_str(self):
-        timezone_name = random_code(string.ascii_letters, 16)
-        timezone = models.Timezone(name=timezone_name)
-        self.assertEqual(str(timezone), timezone_name)
+        timezone = factories.TimezoneFactory()
+        self.assertEqual(str(timezone), timezone.name)
 
     def test_models_translation_str(self):
-        locale_code = random_code(string.ascii_letters, 2)
-        locale = models.Locale(code=locale_code)
-
-        translation = models.Translation(locale=locale, content=locale)
-        # Django 1.9 compatible assert  "None (<locale>)"
-        self.assertTrue(str(translation).strip()[:-2].endswith(str(locale)))
+        translation = factories.TranslationFactory()
+        # Django 1.9 compatible assert  "None (<locale>): text"
+        self.assertTrue(
+            str(translation).strip().endswith(str(translation.text))
+        )
