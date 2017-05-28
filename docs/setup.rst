@@ -19,7 +19,7 @@ Add ``'countries_flavor'`` to your ``INSTALLED_APPS`` setting::
 Dependencies
 ------------
 
-``countries-flavor`` supports `Django`_ 1.9+ on Python 2.7, 3.4, 3.5 and 3.6.
+``countries-flavor`` supports `Django`_ 1.9+ on Python 3.4, 3.5 and 3.6.
 
 .. _Django: http://www.djangoproject.com/
 
