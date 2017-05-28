@@ -24,7 +24,7 @@ class ManagersTests(TestCase):
         language = factories.LanguageFactory()
         country = factories.CountryFactory()
 
-        locale_code = "{locale.language.cla2}_{locale.country.cca2}".format(
+        locale_code = "{language.cla2}_{country.cca2}".format(
             language=language,
             country=country
         )
