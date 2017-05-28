@@ -77,6 +77,7 @@ class Command(DumperBaseCommand):
 
     def dump_country(self, country):
         path = self.get_country_path(country, 'geo')
+
         with self.open_fixture(path, 'w') as fixture:
             fixture.write([country])
 
