@@ -16,14 +16,16 @@ class Command(DumperBaseCommand):
             dest='babel',
             action='store_true',
             default=False,
-            help='Load babel data.')
+            help='Load babel data.'
+        )
 
         parser.add_argument(
             '--translations', '-t',
             dest='translations',
             action='store_true',
             default=False,
-            help='Load translations data.')
+            help='Load translations data.'
+        )
 
     def handle(self, **options):
         self.verbosity = options['verbosity']
@@ -45,10 +47,12 @@ class Command(DumperBaseCommand):
             field.name for field in get_one_to_many_fields(models.Country)
         ]
 
-        for fixture_path in sorted(
-                self.get_fixtures(),
-                key=lambda path: any(f in path for f in one_to_many_fields)):
+        fixtures = sorted([
+            fixture for fixture in self._rootdir.glob('**/*.*')
+            if 'self' != fixture.parent.stem
+        ], key=lambda path: any(f in path.stem for f in one_to_many_fields))
 
+        for fixture_path in fixtures:
             self.loaddata(fixture_path)
 
     def load_country_self_reference(self, name):

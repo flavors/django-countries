@@ -1,5 +1,4 @@
-import os
-import re
+from pathlib import Path
 
 from django.core import serializers
 from django.core.management.base import BaseCommand
@@ -41,47 +40,29 @@ class DumperBaseCommand(BaseCommand):
     exclude_fixtures = tuple()
 
     def __init__(self, *args, **kwargs):
-        self._exclude_patterns = list(map(re.compile, self.exclude_fixtures))
-        self._rootdir = os.path.abspath(
-            os.path.join(
-                os.path.dirname(os.path.dirname(__file__)),
-                os.pardir, 'fixtures'
-            )
-        )
-
+        self._rootdir = Path(__file__).parents[2] / 'fixtures'
         super().__init__(*args, **kwargs)
 
-    def get_fixtures(self):
-        fixtures = []
-
-        for root, dirs, files in os.walk(self._rootdir, topdown=True):
-            # Exclude self references
-            if 'self' in dirs:
-                dirs.remove('self')
-
-            for fixture in files:
-                fixtures.append(os.path.join(
-                    root.split('fixtures/')[1], fixture)
-                )
-        return fixtures
-
     def get_fixture_path(self, path):
-        return "{path}.json".format(path=os.path.join(self._rootdir, path))
+        path = Path(path)
+        if not path.is_absolute():
+            return self._rootdir / path.with_suffix('.json')
+        return path
 
     def get_country_path(self, country, name):
-        return "countries/{cca2}.{name}".format(
-            cca2=country.cca2.lower(),
-            name=name)
+        return Path('countries', country.cca2.lower()).with_suffix('.' + name)
 
     def open_fixture(self, path, mode):
+        path = self.get_fixture_path()
         return TextIOWrapper(
-            self.get_fixture_path(path),
+            path=path,
             mode=mode,
             format='json',
-            is_fake=self.is_excluded(path))
+            is_fake=self.is_excluded(path)
+        )
 
     def is_excluded(self, path):
         return next((
-            True for pattern in self._exclude_patterns
-            if pattern.match(path)), False
+            True for pattern in self.exclude_fixtures
+            if path.match(pattern)), False
         )

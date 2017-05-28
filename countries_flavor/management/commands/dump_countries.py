@@ -1,5 +1,3 @@
-import os
-
 from django.core.management import call_command
 
 from ...fields import get_first_related_model_field
@@ -17,8 +15,9 @@ class Command(DumperBaseCommand):
     help = 'Dump data'
 
     exclude_fixtures = (
-        r'.*all/locale',
-        r'.*countries/[a-z]{2}.locales')
+        'all/locale*',
+        'countries/*.locales*'
+    )
 
     def handle(self, **options):
         self.verbosity = options['verbosity']
@@ -44,29 +43,25 @@ class Command(DumperBaseCommand):
                 'dumpdata',
                 model_name,
                 output=fixture_path,
-                verbosity=self.verbosity)
+                verbosity=self.verbosity
+            )
 
     def dump_all(self):
-        all_dir = os.path.join(self._rootdir, 'all')
-
-        for fixture in os.listdir(all_dir):
-            fixture_path = os.path.join(all_dir, fixture)
-            model_name = os.path.splitext(fixture)[0]
-            model = get_model(model_name=model_name)
+        for fixture_path in (self._rootdir / 'all').iterdir():
+            model = get_model(model_name=fixture_path.stem)
 
             country_field =\
                 get_first_related_model_field(model, models.Country)
 
             if country_field is not None:
-                # Country FK is none
-                with self.open_fixture(fixture_path[:-5], 'w') as fixture:
+                with self.open_fixture(fixture_path, 'w') as fixture:
                     fixture.write(
                         model.objects.filter(**{
                             "{}__isnull".format(country_field.name): True
                         })
                     )
             else:
-                self.dumpdata(model_name, fixture_path)
+                self.dumpdata(fixture_path.stem, fixture_path)
 
     def dump_country_self_reference(self, name):
         with self.open_fixture("self/{}".format(name), 'w') as fixture:
