@@ -1,6 +1,7 @@
 -r dev.txt
 
 coverage>=4.3.4
+factory-boy>=2.8.1
 flake8>=3.3.0
 psycopg2>=2.6.2
 PyYAML>=3.12

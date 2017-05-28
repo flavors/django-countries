@@ -51,6 +51,7 @@ setup(
     tests_require=[
         'Babel>=2.4.0',
         'Django>=1.9',
+        'factory-boy>=2.8.1',
         'psycopg2>=2.6.2',
         'requests>=1.1.0'
     ],
