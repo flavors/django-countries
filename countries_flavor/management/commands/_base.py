@@ -46,7 +46,7 @@ class DumperBaseCommand(BaseCommand):
     def get_fixture_path(self, path):
         path = Path(path)
         if not path.is_absolute():
-            return self._rootdir / path.with_suffix('.json')
+            return self._rootdir / path.with_name(path.name + '.json')
         return path
 
     def get_country_path(self, country, name):
