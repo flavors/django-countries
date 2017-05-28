@@ -14,7 +14,7 @@ class TextIOWrapper(object):
         self.is_fake = is_fake
 
         if not is_fake:
-            self._file = open(path, mode)
+            self._file = open(path.as_posix(), mode)
         else:
             self._file = None
 
