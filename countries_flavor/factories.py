@@ -6,8 +6,15 @@ import factory.fuzzy
 from django.contrib.contenttypes.models import ContentType
 
 
+class FuzzyCode(factory.fuzzy.FuzzyText):
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('chars', string.ascii_uppercase)
+        super().__init__(*args, **kwargs)
+
+
 class ContinentFactory(factory.django.DjangoModelFactory):
-    code = factory.fuzzy.FuzzyText(chars=string.ascii_uppercase, length=2)
+    code = FuzzyCode(length=2)
     name = factory.fuzzy.FuzzyText(length=16)
 
     class Meta:
@@ -16,10 +23,10 @@ class ContinentFactory(factory.django.DjangoModelFactory):
 
 
 class CountryFactory(factory.django.DjangoModelFactory):
-    cca2 = factory.fuzzy.FuzzyText(chars=string.ascii_uppercase, length=2)
-    cca3 = factory.fuzzy.FuzzyText(chars=string.ascii_uppercase, length=3)
-    ccn3 = factory.fuzzy.FuzzyText(chars=string.digits, length=3)
-    cioc = factory.fuzzy.FuzzyText(chars=string.ascii_uppercase, length=3)
+    cca2 = FuzzyCode(length=2)
+    cca3 = FuzzyCode(length=3)
+    ccn3 = FuzzyCode(chars=string.digits, length=3)
+    cioc = FuzzyCode(length=3)
 
     continent = factory.SubFactory(ContinentFactory)
 
@@ -34,8 +41,8 @@ class CountryFactory(factory.django.DjangoModelFactory):
 
 
 class CurrencyFactory(factory.django.DjangoModelFactory):
-    code = factory.fuzzy.FuzzyText(chars=string.ascii_uppercase, length=3)
-    numeric = factory.fuzzy.FuzzyText(chars=string.digits, length=3)
+    code = FuzzyCode(length=3)
+    numeric = FuzzyCode(chars=string.digits, length=3)
     name = factory.fuzzy.FuzzyText(length=16)
 
     class Meta:
@@ -56,8 +63,8 @@ class DivisionFactory(factory.django.DjangoModelFactory):
 
 
 class LanguageFactory(factory.django.DjangoModelFactory):
-    cla3 = factory.fuzzy.FuzzyText(chars=string.ascii_lowercase, length=3)
-    cla2 = factory.fuzzy.FuzzyText(chars=string.ascii_lowercase, length=2)
+    cla3 = FuzzyCode(chars=string.ascii_lowercase, length=3)
+    cla2 = FuzzyCode(chars=string.ascii_lowercase, length=2)
     name = factory.fuzzy.FuzzyText(length=16)
 
     class Meta:
@@ -65,11 +72,15 @@ class LanguageFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ('cla3',)
 
 
-class LocaleFactory(factory.django.DjangoModelFactory):
-    code = factory.fuzzy.FuzzyText(length=16)
-
-    language = factory.SubFactory(LanguageFactory)
+class LanguageCountryMixin(object):
     country = factory.SubFactory(CountryFactory)
+    language = factory.SubFactory(LanguageFactory)
+
+
+class LocaleFactory(LanguageCountryMixin,
+                    factory.django.DjangoModelFactory):
+
+    code = factory.fuzzy.FuzzyText(length=16)
 
     class Meta:
         model = 'countries_flavor.Locale'
@@ -84,11 +95,10 @@ class TimezoneFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ('name',)
 
 
-class CountryNameFactory(factory.django.DjangoModelFactory):
-    common = factory.fuzzy.FuzzyText(length=32)
+class CountryNameFactory(LanguageCountryMixin,
+                         factory.django.DjangoModelFactory):
 
-    country = factory.SubFactory(CountryFactory)
-    language = factory.SubFactory(LanguageFactory)
+    common = factory.fuzzy.FuzzyText(length=32)
 
     class Meta:
         model = 'countries_flavor.CountryName'
