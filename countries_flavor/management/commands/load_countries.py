@@ -58,7 +58,10 @@ class Command(DumperBaseCommand):
         ]
 
         fixtures = self.get_fixtures(
-            key=lambda path: any(f in path.stem for f in one_to_many_fields)
+            key=lambda path: any(
+                name in path.stem or path.parent.match(name)
+                for name in one_to_many_fields
+            )
         )
 
         for fixture_path in fixtures:
