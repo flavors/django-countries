@@ -42,15 +42,20 @@ class Command(DumperBaseCommand):
         if not self.is_excluded(fixture_path):
             call_command('loaddata', fixture_path, verbosity=self.verbosity)
 
+    def get_fixtures(self, **kwargs):
+        return sorted([
+            fixture for fixture in self._rootdir.glob('**/*.*')
+            if 'self' != fixture.parent.stem
+        ], **kwargs)
+
     def load_all(self):
         one_to_many_fields = [
             field.name for field in get_one_to_many_fields(models.Country)
         ]
 
-        fixtures = sorted([
-            fixture for fixture in self._rootdir.glob('**/*.*')
-            if 'self' != fixture.parent.stem
-        ], key=lambda path: any(f in path.stem for f in one_to_many_fields))
+        fixtures = self.get_fixtures(
+            key=lambda path: any(f in path.stem for f in one_to_many_fields)
+        )
 
         for fixture_path in fixtures:
             self.loaddata(fixture_path)
