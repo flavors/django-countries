@@ -42,7 +42,7 @@ class Command(DumperBaseCommand):
             call_command(
                 'dumpdata',
                 model_name,
-                output=fixture_path,
+                output=fixture_path.as_posix(),
                 verbosity=self.verbosity
             )
 
