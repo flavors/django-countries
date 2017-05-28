@@ -21,8 +21,7 @@ class Continent(models.Model):
         _('code'),
         length=2,
         primary_key=True,
-        regex=r'[A-Z]'
-    )
+        regex=r'[A-Z]')
 
     name = models.CharField(_('name'), max_length=16)
 
@@ -40,33 +39,28 @@ class Country(models.Model):
         _('code ISO 3166-1 alpha-2'),
         length=2,
         primary_key=True,
-        regex=r'[A-Z]'
-    )
+        regex=r'[A-Z]')
 
     cca3 = fields.CodeISOField(
         _('code ISO 3166-1 alpha-3'),
         length=3,
-        regex=r'[A-Z]'
-    )
+        regex=r'[A-Z]')
 
     ccn3 = fields.CodeISOField(
         _('code ISO 3166-1 numeric'),
         length=3,
-        regex=r'\d'
-    )
+        regex=r'\d')
 
     cioc = fields.CodeISOField(
         _('code International Olympic Committee'),
         length=3,
-        regex=r'[A-Z]'
-    )
+        regex=r'[A-Z]')
 
     continent = models.ForeignKey(
         'Continent',
         null=True,
         on_delete=models.PROTECT,
-        verbose_name=_('continent')
-    )
+        verbose_name=_('continent'))
 
     location = models.PointField(null=True)
     mpoly = models.MultiPolygonField(null=True)
@@ -76,23 +70,20 @@ class Country(models.Model):
         _('region code'),
         blank=True,
         length=3,
-        regex=r'\d'
-    )
+        regex=r'\d')
 
     subregion = models.CharField(_('subregion'), max_length=64)
     subregion_code = fields.CodeISOField(
         _('subregion code'),
         blank=True,
         length=3,
-        regex=r'\d'
-    )
+        regex=r'\d')
 
     world_region = fields.CodeISOField(
         _('world region code'),
         blank=True,
         length=4,
-        regex=r'[A-Z]'
-    )
+        regex=r'[A-Z]')
 
     postal_code = models.NullBooleanField()
 
@@ -100,8 +91,7 @@ class Country(models.Model):
     independent = models.CharField(
         _('independent'),
         blank=True,
-        max_length=64
-    )
+        max_length=64)
 
     landlocked = models.BooleanField(_('landlocked status'))
     demonym = models.CharField(_('name of residents'), max_length=64)
@@ -113,63 +103,52 @@ class Country(models.Model):
         models.CharField(
             max_length=8,
             validators=[RegexValidator(regex=r'^\d+$')]),
-        verbose_name=_('calling codes')
-    )
+        verbose_name=_('calling codes'))
 
     international_prefix = models.CharField(
         _('international prefix'),
         blank=True,
-        max_length=4
-    )
+        max_length=4)
 
     national_destination_code_lengths = pg_fields.ArrayField(
         models.PositiveSmallIntegerField(),
         null=True,
-        verbose_name=_('national destination code lengths')
-    )
+        verbose_name=_('national destination code lengths'))
 
     national_number_lengths = pg_fields.ArrayField(
         models.PositiveSmallIntegerField(),
         null=True,
-        verbose_name=_('national number lengths')
-    )
+        verbose_name=_('national number lengths'))
 
     national_prefix = models.CharField(
         _('national prefix'),
         blank=True,
-        max_length=4
-    )
+        max_length=4)
 
     alt_spellings = pg_fields.ArrayField(
         models.CharField(max_length=128),
-        verbose_name=_('alternative spellings')
-    )
+        verbose_name=_('alternative spellings'))
 
     tlds = pg_fields.ArrayField(
         models.CharField(max_length=16),
-        verbose_name=_('country code top-level domains')
-    )
+        verbose_name=_('country code top-level domains'))
 
     borders = models.ManyToManyField(
         'self',
         blank=True,
-        verbose_name=_('land borders')
-    )
+        verbose_name=_('land borders'))
 
     currencies = models.ManyToManyField(
         'Currency',
-        verbose_name=_('currencies')
-    )
+        verbose_name=_('currencies'))
 
     languages = models.ManyToManyField(
         'Language',
-        verbose_name=_('official languages')
-    )
+        verbose_name=_('official languages'))
 
     timezones = models.ManyToManyField(
         'Timezone',
-        verbose_name=_('timezones')
-    )
+        verbose_name=_('timezones'))
 
     translations = GenericRelation('Translation')
 
@@ -191,15 +170,13 @@ class CountryName(models.Model):
         'Country',
         on_delete=models.CASCADE,
         verbose_name=_('country'),
-        related_name='names'
-    )
+        related_name='names')
 
     language = models.ForeignKey(
         'Language',
         on_delete=models.CASCADE,
         related_name='translations',
-        verbose_name=_('language')
-    )
+        verbose_name=_('language'))
 
     common = models.CharField(_('common name'), max_length=128)
     official = models.CharField(_('official name'), max_length=128)
@@ -220,15 +197,13 @@ class Currency(models.Model):
         _('code ISO 4217'),
         length=3,
         primary_key=True,
-        regex=r'[A-Z]'
-    )
+        regex=r'[A-Z]')
 
     numeric = fields.CodeISOField(
         _('code ISO 4217 numeric'),
         blank=True,
         length=3,
-        regex=r'\d'
-    )
+        regex=r'\d')
 
     name = models.CharField(_('name'), max_length=64)
     full_name = models.CharField(_('full name'), blank=True, max_length=64)
@@ -239,8 +214,7 @@ class Currency(models.Model):
     unicode_hex = pg_fields.ArrayField(
         models.CharField(max_length=8),
         null=True,
-        verbose_name=_('unicode hex')
-    )
+        verbose_name=_('unicode hex'))
 
     translations = GenericRelation('Translation')
 
@@ -258,16 +232,14 @@ class Division(models.Model):
         'Country',
         on_delete=models.CASCADE,
         related_name='divisions',
-        verbose_name=_('country')
-    )
+        verbose_name=_('country'))
 
     code = models.CharField(_('code'), max_length=8, db_index=True)
     name = models.CharField(_('name'), max_length=128)
 
     alt_names = pg_fields.ArrayField(
         models.CharField(max_length=128),
-        verbose_name=_('alternative names')
-    )
+        verbose_name=_('alternative names'))
 
     location = models.PointField(null=True)
     poly = models.PolygonField(null=True)
@@ -289,15 +261,13 @@ class Language(models.Model):
         _('language code ISO 639-3'),
         length=3,
         primary_key=True,
-        regex=r'[a-z]'
-    )
+        regex=r'[a-z]')
 
     cla2 = fields.CodeISOField(
         _('language code ISO 639-1'),
         blank=True,
         length=3,
-        regex=r'[a-z]'
-    )
+        regex=r'[a-z]')
 
     translations = GenericRelation('Translation')
 
@@ -314,23 +284,20 @@ class Locale(models.Model):
     code = models.CharField(
         _('code'),
         max_length=16,
-        primary_key=True
-    )
+        primary_key=True)
 
     language = models.ForeignKey(
         'Language',
         on_delete=models.CASCADE,
         verbose_name=_('language'),
-        related_name='locales'
-    )
+        related_name='locales')
 
     country = models.ForeignKey(
         'Country',
         null=True,
         on_delete=models.PROTECT,
         verbose_name=_('country'),
-        related_name='locales'
-    )
+        related_name='locales')
 
     data = pg_fields.JSONField(null=True)
 
@@ -400,14 +367,12 @@ class Translation(models.Model):
     content_type = models.ForeignKey(
         ContentType,
         on_delete=models.CASCADE,
-        verbose_name=_('content type')
-    )
+        verbose_name=_('content type'))
 
     object_id = models.CharField(
         db_index=True,
         max_length=64,
-        verbose_name=_('content ID')
-    )
+        verbose_name=_('content ID'))
 
     content = GenericForeignKey('content_type', 'object_id')
 
@@ -415,8 +380,7 @@ class Translation(models.Model):
         'Locale',
         on_delete=models.CASCADE,
         related_name='translations',
-        verbose_name=_('locale')
-    )
+        verbose_name=_('locale'))
 
     text = models.CharField(_('text'), max_length=128)
 
