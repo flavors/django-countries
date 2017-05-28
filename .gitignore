@@ -24,3 +24,4 @@ build/
 coverage.xml
 dist/
 docs/_build/
+sftp-config.json
