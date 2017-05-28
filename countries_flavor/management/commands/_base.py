@@ -53,7 +53,8 @@ class DumperBaseCommand(BaseCommand):
         return Path('countries', country.cca2.lower()).with_suffix('.' + name)
 
     def open_fixture(self, path, mode):
-        path = self.get_fixture_path()
+        path = self.get_fixture_path(path)
+
         return TextIOWrapper(
             path=path,
             mode=mode,
