@@ -6,7 +6,8 @@ from django.db import models
 def get_first_related_model_field(model, related_model):
     return next((
         field for field in get_many_to_one_fields(model)
-        if field.related_model == related_model), None)
+        if field.related_model == related_model), None
+    )
 
 
 def get_many_to_one_fields(model):
@@ -48,11 +49,12 @@ class CodeISOField(models.CharField):
 
         kwargs.update({
             'max_length': length,
-            'validators': [RegexValidator(
-                regex=r"^{regex}{{{length}}}$".format(
-                    regex=regex,
-                    length=length)
-            )]
+            'validators': [
+                RegexValidator(
+                    regex=r"^{regex}{{{length}}}$".format(
+                        regex=regex,
+                        length=length)
+                )]
         })
 
         super().__init__(verbose_name, *args, **kwargs)

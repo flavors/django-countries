@@ -6,6 +6,7 @@ from babel.plural import PluralRule
 from .shortcuts import get_babel
 from .shortcuts import get_model
 
+
 __all__ = ['load_babel', 'load_translations']
 
 
@@ -69,6 +70,7 @@ def load_translations(locale, data):
         translate = get_model('translation')(
             content=country,
             locale=locale,
-            text=name)
+            text=name
+        )
 
         translate.save()

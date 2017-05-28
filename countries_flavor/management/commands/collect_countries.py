@@ -16,7 +16,8 @@ class Command(BaseCommand):
         parser.add_argument(
             '--countries', '-c',
             dest='countries',
-            help='Comma separated list of countries in ISO 3166-1 alpha-2')
+            help='Comma separated list of countries in ISO 3166-1 alpha-2'
+        )
 
     def handle(self, **options):
         countries_path = 'dist/countries'
@@ -95,7 +96,8 @@ class Command(BaseCommand):
                 'calling_codes': data['callingCode'],
                 'tlds': data['tld'],
                 'mpoly': geometry
-            })
+            }
+        )
 
     @classmethod
     def add_borders(cls, countries):
@@ -122,7 +124,8 @@ class Command(BaseCommand):
         for language_code, name in languages.items():
             language, _ = models.Language.objects.update_or_create(
                 cla3=language_code,
-                defaults={'name': name})
+                defaults={'name': name}
+            )
 
             country.languages.add(language)
 
@@ -138,4 +141,5 @@ class Command(BaseCommand):
                 defaults={
                     'common': name['common'],
                     'official': name['official']
-                })
+                }
+            )
