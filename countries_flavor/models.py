@@ -1,8 +1,7 @@
 import datetime
 import pytz
 
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.fields import GenericRelation
+from django.contrib.contenttypes import fields as generic_fields
 from django.contrib.contenttypes.models import ContentType
 
 from django.contrib.gis.db import models
@@ -150,7 +149,7 @@ class Country(models.Model):
         'Timezone',
         verbose_name=_('timezones'))
 
-    translations = GenericRelation('Translation')
+    translations = generic_fields.GenericRelation('Translation')
 
     class Meta:
         ordering = ('cca2',)
@@ -216,7 +215,7 @@ class Currency(models.Model):
         null=True,
         verbose_name=_('unicode hex'))
 
-    translations = GenericRelation('Translation')
+    translations = generic_fields.GenericRelation('Translation')
 
     class Meta:
         ordering = ('code',)
@@ -269,7 +268,7 @@ class Language(models.Model):
         length=3,
         regex=r'[a-z]')
 
-    translations = GenericRelation('Translation')
+    translations = generic_fields.GenericRelation('Translation')
 
     class Meta:
         ordering = ('cla3',)
@@ -288,7 +287,7 @@ class Locale(models.Model):
 
     language = models.ForeignKey(
         'Language',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name=_('language'),
         related_name='locales')
 
@@ -301,7 +300,7 @@ class Locale(models.Model):
 
     data = pg_fields.JSONField(null=True)
 
-    translations = GenericRelation('Translation')
+    translations = generic_fields.GenericRelation('Translation')
     objects = managers.LocaleManager()
 
     class Meta:
@@ -374,7 +373,7 @@ class Translation(models.Model):
         max_length=64,
         verbose_name=_('content ID'))
 
-    content = GenericForeignKey('content_type', 'object_id')
+    content = generic_fields.GenericForeignKey('content_type', 'object_id')
 
     locale = models.ForeignKey(
         'Locale',
