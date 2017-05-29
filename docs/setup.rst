@@ -6,7 +6,7 @@ Installation
 
 The recommended way to install the Countries Flavor is via pip:
 
-    pip install countries-flavor
+    pip install django-countries-flavor
 
 Add ``'countries_flavor'`` to your ``INSTALLED_APPS`` setting::
 
@@ -19,7 +19,7 @@ Add ``'countries_flavor'`` to your ``INSTALLED_APPS`` setting::
 Dependencies
 ------------
 
-``countries-flavor`` supports `Django`_ 1.9+ on Python 3.4, 3.5 and 3.6.
+``django-countries-flavor`` supports `Django`_ 1.9+ on Python 3.4, 3.5 and 3.6.
 
 .. _Django: http://www.djangoproject.com/
 
@@ -32,7 +32,7 @@ Dependencies
 URLconf
 -------
 
-Add the countries-flavor URLs to your project's URLconf as follows::
+Add the django-countries-flavor URLs to your project's URLconf as follows::
 
     from django.conf.urls import include
     from django.conf.urls import url

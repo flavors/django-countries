@@ -85,17 +85,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/countries-flavor.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/django-countries-flavor.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/countries-flavor.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/django-countries-flavor.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/countries-flavor"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/countries-flavor"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/django-countries-flavor"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/django-countries-flavor"
 	@echo "# devhelp"
 
 epub:

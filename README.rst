@@ -20,7 +20,7 @@ Install last stable version from pypi.
 
 .. code:: sh
 
-    pip install countries-flavor
+    pip install django-countries-flavor
 
 Add ``countries_flavor`` to your INSTALLED_APPS setting.
 
@@ -79,14 +79,14 @@ Credits
 * Timezones: `antonioribeiro/countries <https://github.com/antonioribeiro/countries>`__
 
 
-.. |Docs| image:: https://readthedocs.org/projects/countries-flavor/badge/?version=latest
-   :target: http://countries-flavor.readthedocs.io/en/latest/?badge=latest
+.. |Docs| image:: https://readthedocs.org/projects/django-countries-flavor/badge/?version=latest
+   :target: http://django-countries-flavor.readthedocs.io/en/latest/?badge=latest
 
-.. |Pypi| image:: https://img.shields.io/pypi/v/countries-flavor.svg
-   :target: https://pypi.python.org/pypi/countries-flavor
+.. |Pypi| image:: https://img.shields.io/pypi/v/django-countries-flavor.svg
+   :target: https://pypi.python.org/pypi/django-countries-flavor
 
-.. |Wheel| image:: https://img.shields.io/pypi/wheel/countries-flavor.svg
-   :target: https://pypi.python.org/pypi/countries-flavor
+.. |Wheel| image:: https://img.shields.io/pypi/wheel/django-countries-flavor.svg
+   :target: https://pypi.python.org/pypi/django-countries-flavor
 
 .. |Build Status| image:: https://travis-ci.org/flavors/countries.svg?branch=master
    :target: https://travis-ci.org/flavors/countries

@@ -17,7 +17,7 @@ def get_version(package):
 
 
 setup(
-    name='countries-flavor',
+    name='django-countries-flavor',
     version=get_version('countries_flavor'),
     license='MIT',
     description='A Django application that provides a data collection '
