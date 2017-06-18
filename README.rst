@@ -35,8 +35,7 @@ Hook the Django Rest Framework urls into your URLconf.
 
 .. code:: python
 
-    from django.conf.urls import include
-    from django.conf.urls import url
+    from django.conf.urls import include, url
 
     urlpatterns = [
         url(r'^', include('countries_flavor.rest_framework.urls')
