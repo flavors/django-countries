@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Countries flavor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-01 11:24+0000\n"
-"PO-Revision-Date: 2017-04-26 11:44+0000\n"
+"PO-Revision-Date: 2017-06-18 17:44+0000\n"
 "Last-Translator: mongkok <dani.pyc@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -189,7 +189,7 @@ msgstr "unicode hexadecimal"
 
 #: models.py:223
 msgid "currency"
-msgstr "monedas"
+msgstr "moneda"
 
 #: models.py:242
 msgid "alternative names"
