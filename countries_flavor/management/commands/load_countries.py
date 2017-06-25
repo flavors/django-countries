@@ -57,11 +57,12 @@ class Command(DumperBaseCommand):
             field.name for field in get_one_to_many_fields(models.Country)
         ]
 
+        # Sorted key: /path/to/fixture.ext < fixture.ext
         fixtures = self.get_fixtures(
-            key=lambda path: any(
+            key=lambda path: path.stem if any(
                 name in path.stem or path.parent.match(name)
                 for name in one_to_many_fields
-            )
+            ) else path.as_posix()
         )
 
         for fixture_path in fixtures:
