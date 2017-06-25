@@ -2,5 +2,4 @@ Babel>=2.4.0
 django-filter>=1.0.2
 djangorestframework-filters>=0.10.0
 djangorestframework>=3.5.0
-
--e git://github.com/djangonauts/django-rest-framework-gis.git#egg=django-rest-framework-gis
+djangorestframework-gis==0.11.2
