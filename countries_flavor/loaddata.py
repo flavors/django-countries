@@ -3,8 +3,7 @@ from babel.localedata import Alias
 from babel.numbers import NumberPattern
 from babel.plural import PluralRule
 
-from .shortcuts import get_babel
-from .shortcuts import get_model
+from .shortcuts import get_babel, get_model
 
 
 __all__ = ['load_babel', 'load_translations']
