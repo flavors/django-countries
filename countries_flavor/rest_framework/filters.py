@@ -10,7 +10,7 @@ class CountryFilter(filters.FilterSet):
         fields = {
             'cca2': ['exact'],
             'cca3': ['exact'],
-            'ccn3':  ['exact'],
+            'ccn3': ['exact'],
             'cioc': ['exact'],
             'region': '__all__',
             'subregion': '__all__',
