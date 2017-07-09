@@ -1,7 +1,6 @@
 from django.core.management import call_command
 
-from ...fields import get_one_to_many_fields
-from ...fields import get_self_reference_fields
+from ...fields import get_one_to_many_fields, get_self_reference_fields
 from ... import models
 
 from ._base import DumperBaseCommand

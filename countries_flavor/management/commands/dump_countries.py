@@ -1,9 +1,11 @@
 from django.core.management import call_command
 
-from ...fields import get_first_related_model_field
-from ...fields import get_non_self_reference_fields
-from ...fields import get_one_to_many_fields
-from ...fields import get_self_reference_fields
+from ...fields import (
+    get_first_related_model_field,
+    get_non_self_reference_fields,
+    get_one_to_many_fields,
+    get_self_reference_fields
+)
 
 from ... import models
 from ...shortcuts import get_model

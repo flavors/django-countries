@@ -1,5 +1,4 @@
-from rest_framework import permissions
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 
 from .. import models
 from . import filters
