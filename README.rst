@@ -22,13 +22,13 @@ Install last stable version from pypi.
 
     pip install django-countries-flavor
 
-Add ``countries_flavor`` to your INSTALLED_APPS setting.
+Add ``countries`` to your INSTALLED_APPS setting.
 
 .. code:: python
 
     INSTALLED_APPS = (
         ...
-        'countries_flavor.apps.CountriesAppConfig',
+        'countries.apps.CountriesAppConfig',
     )
 
 Hook the Django Rest Framework urls into your URLconf.
@@ -38,7 +38,7 @@ Hook the Django Rest Framework urls into your URLconf.
     from django.conf.urls import include, url
 
     urlpatterns = [
-        url(r'^', include('countries_flavor.rest_framework.urls')
+        url(r'^', include('countries.rest_framework.urls')
     ]
 
 Apply migrations.
@@ -51,7 +51,7 @@ Apply migrations.
 Load data
 ---------
 
-The ``load_countries`` management command loads all `fixtures <countries_flavor/fixtures>`__ into the database.
+The ``load_countries`` management command loads all `fixtures <countries/fixtures>`__ into the database.
 
 .. code:: sh
 

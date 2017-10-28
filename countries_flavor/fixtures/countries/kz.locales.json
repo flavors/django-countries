@@ -1,1 +1,0 @@
-[{"model": "countries_flavor.locale", "pk": "kk_Cyrl_KZ", "fields": {"language": "kaz", "country": "KZ"}}, {"model": "countries_flavor.locale", "pk": "kk_KZ", "fields": {"language": "kaz", "country": "KZ"}}, {"model": "countries_flavor.locale", "pk": "ru_KZ", "fields": {"language": "rus", "country": "KZ"}}]

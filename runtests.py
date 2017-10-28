@@ -16,7 +16,7 @@ DEFAULT_SETTINGS = dict(
         'django_filters',
         'rest_framework',
         'rest_framework_gis',
-        'countries_flavor.apps.CountriesAppConfig',
+        'countries.apps.CountriesAppConfig',
         'tests'
     ),
     DATABASES={

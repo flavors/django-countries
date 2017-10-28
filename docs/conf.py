@@ -56,7 +56,7 @@ def get_version(package):
 # built documents.
 #
 # The full version, including alpha/beta/rc tags.
-release = get_version('countries_flavor')
+release = get_version('countries')
 # The short X.Y version.
 version = release
 

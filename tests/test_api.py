@@ -1,5 +1,5 @@
 from rest_framework.test import APITestCase
-from countries_flavor import factories
+from countries import factories
 
 from .compat import reverse
 

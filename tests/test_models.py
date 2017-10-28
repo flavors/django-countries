@@ -1,5 +1,5 @@
 from django.test import TestCase
-from countries_flavor import factories
+from countries import factories
 
 
 class ModelsTests(TestCase):

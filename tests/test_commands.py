@@ -3,12 +3,12 @@ from unittest import mock
 from django.core.management import call_command
 from django.test import TestCase
 
-from countries_flavor import models
+from countries import models
 
 
 class CommandsTests(TestCase):
 
-    @mock.patch('countries_flavor.management.commands.collect_countries'
+    @mock.patch('countries.management.commands.collect_countries'
                 '.Command.request', new=lambda cls, path: [])
     def test_command_collect_countries(self):
         call_command('collect_countries')

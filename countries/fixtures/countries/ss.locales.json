@@ -1,0 +1,1 @@
+[{"model": "countries.locale", "pk": "ar_SS", "fields": {"language": "ara", "country": "SS"}}, {"model": "countries.locale", "pk": "en_SS", "fields": {"language": "eng", "country": "SS"}}]

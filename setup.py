@@ -18,7 +18,7 @@ def get_version(package):
 
 setup(
     name='django-countries-flavor',
-    version=get_version('countries_flavor'),
+    version=get_version('countries'),
     license='MIT',
     description='A Django application that provides a data collection '
     'for internationalization and localization purposes.',
@@ -63,7 +63,7 @@ setup(
         'requests>=1.1.0'
     ],
     package_data={
-        'countries_flavor': [
+        'countries': [
             'fixtures/**/*.json',
             'locale/*/LC_MESSAGES/django.po',
             'locale/*/LC_MESSAGES/django.mo'

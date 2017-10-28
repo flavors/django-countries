@@ -8,11 +8,11 @@ The recommended way to install the Countries Flavor is via pip:
 
     pip install django-countries-flavor
 
-Add ``'countries_flavor'`` to your ``INSTALLED_APPS`` setting::
+Add ``'countries'`` to your ``INSTALLED_APPS`` setting::
 
     INSTALLED_APPS = [
         ...
-        'countries_flavor'
+        'countries'
     ]
 
 
@@ -38,7 +38,7 @@ Add the django-countries-flavor URLs to your project's URLconf as follows::
     from django.conf.urls import url
 
     urlpatterns = [
-        url(r'^', include('countries_flavor.rest_framework.urls')
+        url(r'^', include('countries.rest_framework.urls')
     ]
 
 

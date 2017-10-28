@@ -9,7 +9,7 @@ test:
 	@pytest\
 		--verbose\
 		--fail-on-template-vars\
-		--cov=countries_flavor\
+		--cov=countries\
 		--cov-config .coveragerc\
 		--cov-report term\
 		--cov-report xml

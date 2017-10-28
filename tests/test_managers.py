@@ -1,7 +1,7 @@
 from django.test import TestCase
-from countries_flavor import models
+from countries import models
 
-from countries_flavor import factories
+from countries import factories
 
 
 class ManagersTests(TestCase):
