@@ -13,9 +13,6 @@ DEFAULT_SETTINGS = dict(
     INSTALLED_APPS=(
         'django.contrib.auth',
         'django.contrib.contenttypes',
-        'django_filters',
-        'rest_framework',
-        'rest_framework_gis',
         'countries.apps.CountriesAppConfig',
         'tests'
     ),
@@ -26,15 +23,6 @@ DEFAULT_SETTINGS = dict(
             'USER': os.environ.get('POSTGRES_DB_USER', 'postgres'),
             'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD', '')
         }
-    },
-    ROOT_URLCONF='tests.urls',
-    REST_FRAMEWORK={
-        'DEFAULT_FILTER_BACKENDS': (
-            'rest_framework_filters.backends.DjangoFilterBackend',
-            'rest_framework.filters.OrderingFilter',
-            'rest_framework.filters.SearchFilter'
-        ),
-        'TEST_REQUEST_DEFAULT_FORMAT': 'json'
     }
 )
 

@@ -31,10 +31,6 @@ setup(
     install_requires=[
         'Babel>=2.4.0',
         'Django>=1.9',
-        'django-filter>=1.0.2',
-        'djangorestframework>=3.5.0',
-        'djangorestframework-filters>=0.10.0',
-        'djangorestframework-gis==0.11.2',
         'psycopg2>=2.6.2',
         'requests>=1.1.0'
     ],
@@ -55,9 +51,6 @@ setup(
     tests_require=[
         'Babel>=2.4.0',
         'Django>=1.9',
-        'djangorestframework>=3.5.0',
-        'djangorestframework-filters>=0.10.0',
-        'djangorestframework-gis==0.11.2',
         'factory-boy>=2.8.1',
         'psycopg2>=2.6.2',
         'requests>=1.1.0'

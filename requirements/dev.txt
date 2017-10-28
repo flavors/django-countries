@@ -1,5 +1,1 @@
 Babel>=2.4.0
-django-filter>=1.0.2
-djangorestframework-filters>=0.10.0
-djangorestframework>=3.5.0
-djangorestframework-gis==0.11.2

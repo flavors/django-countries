@@ -31,15 +31,6 @@ Add ``countries`` to your INSTALLED_APPS setting.
         'countries.apps.CountriesAppConfig',
     )
 
-Hook the Django Rest Framework urls into your URLconf.
-
-.. code:: python
-
-    from django.conf.urls import include, url
-
-    urlpatterns = [
-        url(r'^', include('countries.rest_framework.urls')
-    ]
 
 Apply migrations.
 
