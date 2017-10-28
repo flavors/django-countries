@@ -17,7 +17,6 @@ Contents
    locales
    timezones
    translations
-   changes
 
 
 Indices and tables
