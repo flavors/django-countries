@@ -1,5 +1,3 @@
-import babel
-
 from django.apps import apps
 
 
@@ -8,6 +6,8 @@ def get_model(model_name):
 
 
 def get_babel(locale):
+    import babel
+
     if locale.country is not None:
         cca2 = locale.country.cca2
     else:

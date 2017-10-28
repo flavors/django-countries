@@ -1,8 +1,3 @@
-from babel.dates import DateTimePattern
-from babel.localedata import Alias
-from babel.numbers import NumberPattern
-from babel.plural import PluralRule
-
 from .shortcuts import get_babel, get_model
 
 
@@ -25,11 +20,15 @@ class BaseParser(object):
 class BabelParser(BaseParser):
 
     def default(self, obj):
-        if isinstance(obj, PluralRule):
+        import babel
+
+        if isinstance(obj, babel.plural.PluralRule):
             return obj.rules
-        elif isinstance(obj, Alias):
+        elif isinstance(obj, babel.localedata.Alias):
             return obj.keys
-        elif isinstance(obj, (DateTimePattern, NumberPattern)):
+        elif isinstance(obj, (
+                babel.dates.DateTimePattern,
+                babel.numbers.NumberPattern)):
             return obj.__dict__
         return obj
 

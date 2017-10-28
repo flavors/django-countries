@@ -29,7 +29,6 @@ setup(
     url='https://github.com/flavors/countries/',
     packages=find_packages(exclude=['tests*']),
     install_requires=[
-        'Babel>=2.4.0',
         'Django>=1.9',
         'psycopg2>=2.6.2',
         'requests>=1.1.0'
@@ -49,7 +48,6 @@ setup(
     ],
     zip_safe=False,
     tests_require=[
-        'Babel>=2.4.0',
         'Django>=1.9',
         'factory-boy>=2.8.1',
         'psycopg2>=2.6.2',

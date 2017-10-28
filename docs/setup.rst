@@ -29,22 +29,9 @@ Dependencies
     Postgis database is required
 
 
-URLconf
--------
-
-Add the django-countries-flavor URLs to your project's URLconf as follows::
-
-    from django.conf.urls import include
-    from django.conf.urls import url
-
-    urlpatterns = [
-        url(r'^', include('countries.rest_framework.urls')
-    ]
-
-
 Loaddata
 --------
 
 The ``loadcountries`` management command loads all fixtures into the database.
 
-    python manage.py loadcountries --babel
+    python manage.py loadcountries
