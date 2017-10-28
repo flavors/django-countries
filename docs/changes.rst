@@ -4,8 +4,8 @@ Change Log
 0.0.2 (2017-05-06)
 --------------------
 
-* Command ``load_countries``
-* Command ``dump_countries``
+* Command ``loadcountries``
+* Command ``dumpcountries``
 * Fixtures
 * Country extra data
 * Timezones, locales and geographical divisions

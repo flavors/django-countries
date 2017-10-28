@@ -42,11 +42,11 @@ Apply migrations.
 Load data
 ---------
 
-The ``load_countries`` management command loads all `fixtures <countries/fixtures>`__ into the database.
+The ``loadcountries`` management command loads all `fixtures <countries/fixtures>`__ into the database.
 
 .. code:: sh
 
-    python manage.py load_countries  --babel
+    python manage.py loadcountries
 
 
 Standards ISO

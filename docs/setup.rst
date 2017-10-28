@@ -45,6 +45,6 @@ Add the django-countries-flavor URLs to your project's URLconf as follows::
 Loaddata
 --------
 
-The ``load_countries`` management command loads all fixtures into the database.
+The ``loadcountries`` management command loads all fixtures into the database.
 
-    python manage.py load_countries --babel
+    python manage.py loadcountries --babel
