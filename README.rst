@@ -8,7 +8,7 @@ A Django application that provides a data collection for internationalization an
 Dependencies
 ------------
 
-* Python ≥ 3.4
+* Python ≥ 3.5
 * Django ≥ 1.9
 * PostGIS database (PostgreSQL ≥ 9.4)
 
@@ -26,10 +26,10 @@ Add ``countries`` to your INSTALLED_APPS setting.
 
 .. code:: python
 
-    INSTALLED_APPS = (
+    INSTALLED_APPS = [
         ...
         'countries.apps.CountriesAppConfig',
-    )
+    ]
 
 
 Apply migrations.

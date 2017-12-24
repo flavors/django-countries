@@ -2,7 +2,6 @@ language: python
 dist: trusty
 
 python:
-  - '3.4'
   - '3.5'
   - '3.6'
 
@@ -11,10 +10,6 @@ addons:
   apt:
     packages:
       - postgresql-9.6-postgis-2.3
-
-  code_climate:
-    repo_token:
-      secure: 'hHMqmqPpzOryQ33ns4jgKpLEqJe+//3kNYSYRo1R4+4rmOxqPDwmsyC9km/v2r2XHwcVs2yWx4U3tpHUzbwUYz5aAiC9SI6DAnDb0VJz/f1UR4fAN5X/2Z5Lbv'
 
 before_install:
   - sudo apt-get update -qq
