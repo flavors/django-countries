@@ -27,9 +27,9 @@ class CountryFactory(factory.django.DjangoModelFactory):
     continent = factory.SubFactory(ContinentFactory)
 
     landlocked = True
-    calling_codes = list()
-    alt_spellings = list()
-    tlds = list()
+    calling_codes = []
+    alt_spellings = []
+    tlds = []
 
     class Meta:
         model = 'countries.Country'
@@ -50,7 +50,7 @@ class DivisionFactory(factory.django.DjangoModelFactory):
     code = factory.fuzzy.FuzzyText(length=8)
     name = factory.fuzzy.FuzzyText(length=16)
 
-    alt_names = list()
+    alt_names = []
     country = factory.SubFactory(CountryFactory)
 
     class Meta:
@@ -102,7 +102,7 @@ class TranslationFactory(factory.django.DjangoModelFactory):
     locale = factory.SubFactory(LocaleFactory)
 
     content_type = factory.LazyAttribute(
-        lambda obj: ContentType.objects.get_for_model(obj.content)
+        lambda obj: ContentType.objects.get_for_model(obj.content),
     )
 
     object_id = factory.SelfAttribute('content.cca2')

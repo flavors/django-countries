@@ -13,14 +13,14 @@ class ContinentAdmin(admin.ModelAdmin):
 class CountryAdmin(admin.OSMGeoAdmin):
     list_display = [
         'cca2', 'cca3', 'ccn3', 'cioc', 'continent', 'region', 'subregion',
-        'capital', 'landlocked', 'demonym', 'area'
+        'capital', 'landlocked', 'demonym', 'area',
     ]
 
     list_filter = ['continent', 'landlocked']
 
     search_fields = [
         '=cca2', '=cca3', '=ccn3', '=cioc',
-        '^region', '^subregion', '^capital'
+        '^region', '^subregion', '^capital',
     ]
 
 
@@ -34,7 +34,7 @@ class CountryNameAdmin(admin.ModelAdmin):
 @admin.register(models.Currency)
 class CurrencyAdmin(admin.ModelAdmin):
     list_display = [
-        'code', 'numeric', 'name', 'full_name', 'symbol', 'minor_unit'
+        'code', 'numeric', 'name', 'full_name', 'symbol', 'minor_unit',
     ]
 
     search_fields = ['=code', '=numeric', '^name', 'full_name', '^symbol']
@@ -57,7 +57,7 @@ class LanguageAdmin(admin.ModelAdmin):
 class LocaleAdmin(admin.ModelAdmin):
     list_display = ['code', 'language', 'country']
     search_fields = [
-        '=code', '=language__cla2', '=language__cla3', 'country__cca2'
+        '=code', '=language__cla2', '=language__cla3', 'country__cca2',
     ]
 
 

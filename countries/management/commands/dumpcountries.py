@@ -14,7 +14,7 @@ class Command(DumperBaseCommand):
 
     exclude_fixtures = (
         'all/locale*',
-        'countries/*.locales*'
+        'countries/*.locales*',
     )
 
     def handle(self, **options):
@@ -35,14 +35,13 @@ class Command(DumperBaseCommand):
 
     def dumpdata(self, model_name, fixture_path):
         if not self.is_excluded(fixture_path):
-            model_name = "countries.{model}".format(model=model_name)
+            model_name = 'countries.{model}'.format(model=model_name)
 
             call_command(
                 'dumpdata',
                 model_name,
                 output=fixture_path.as_posix(),
-                verbosity=self.verbosity
-            )
+                verbosity=self.verbosity)
 
     def dump_all(self):
         for fixture_path in (self._rootdir / 'all').iterdir():
@@ -55,14 +54,14 @@ class Command(DumperBaseCommand):
                 with self.open_fixture(fixture_path, 'w') as fixture:
                     fixture.write(
                         model.objects.filter(**{
-                            "{}__isnull".format(country_field.name): True
-                        })
+                            '{}__isnull'.format(country_field.name): True,
+                        }),
                     )
             else:
                 self.dumpdata(fixture_path.stem, fixture_path)
 
     def dump_country_self_reference(self, name):
-        with self.open_fixture("self/{}".format(name), 'w') as fixture:
+        with self.open_fixture('self/{}'.format(name), 'w') as fixture:
             fixture.write(models.Country.objects.all(), fields=(name,))
 
     def dump_country_one_to_many(self, country, name):

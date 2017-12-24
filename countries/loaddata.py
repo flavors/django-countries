@@ -67,7 +67,6 @@ def load_translations(locale, data):
         translate = get_model('translation')(
             content=country,
             locale=locale,
-            text=name
-        )
+            text=name)
 
         translate.save()

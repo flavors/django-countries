@@ -8,11 +8,14 @@ from .shortcuts import get_model
 __all__ = ['LocaleManager']
 
 
+locale_regex = re.compile(r'.*_([A-Z]{2})$')
+
+
 class BaseLocaleManager(models.Manager):
 
-    def create_locale(self, code, regex=re.compile(r'.*_([A-Z]{2})$')):
+    def create_locale(self, code):
         language = get_model('language').objects.get(cla2=code[:2])
-        country_match = regex.match(code)
+        country_match = locale_regex.match(code)
 
         if country_match is not None:
             country = get_model('country').objects\

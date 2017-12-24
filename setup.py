@@ -31,7 +31,7 @@ setup(
     install_requires=[
         'Django>=1.9',
         'psycopg2>=2.6.2',
-        'requests>=1.1.0'
+        'requests>=1.1.0',
     ],
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -50,13 +50,13 @@ setup(
         'Django>=1.9',
         'factory-boy>=2.8.1',
         'psycopg2>=2.6.2',
-        'requests>=1.1.0'
+        'requests>=1.1.0',
     ],
     package_data={
         'countries': [
             'fixtures/**/*.json',
             'locale/*/LC_MESSAGES/django.po',
-            'locale/*/LC_MESSAGES/django.mo'
-        ]
-    }
+            'locale/*/LC_MESSAGES/django.mo',
+        ],
+    },
 )

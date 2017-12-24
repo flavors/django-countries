@@ -21,8 +21,7 @@ class ModelsTests(TestCase):
         country_name = factories.CountryNameFactory()
 
         self.assertTrue(
-            str(country_name).startswith(country_name.country.cca2)
-        )
+            str(country_name).startswith(country_name.country.cca2))
 
     def test_models_division_str(self):
         division = factories.DivisionFactory()
@@ -44,5 +43,4 @@ class ModelsTests(TestCase):
         translation = factories.TranslationFactory()
         # Django 1.9 compatible assert  "None (<locale>): text"
         self.assertTrue(
-            str(translation).strip().endswith(str(translation.text))
-        )
+            str(translation).strip().endswith(str(translation.text)))

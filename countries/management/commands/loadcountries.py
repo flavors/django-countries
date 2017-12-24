@@ -14,16 +14,14 @@ class Command(DumperBaseCommand):
             dest='babel',
             action='store_true',
             default=False,
-            help='Load babel data.'
-        )
+            help='Load babel data.')
 
         parser.add_argument(
             '--translations', '-t',
             dest='translations',
             action='store_true',
             default=False,
-            help='Load translations data.'
-        )
+            help='Load translations data.')
 
     def handle(self, **options):
         self.verbosity = options['verbosity']
@@ -41,14 +39,13 @@ class Command(DumperBaseCommand):
             call_command(
                 'loaddata',
                 fixture_path.as_posix(),
-                verbosity=self.verbosity
-            )
+                verbosity=self.verbosity)
 
     def get_fixtures(self, **kwargs):
-        return sorted([
+        return sorted((
             fixture for fixture in self._rootdir.glob('**/*.*')
             if 'self' != fixture.parent.stem
-        ], **kwargs)
+        ), **kwargs)
 
     def load_all(self):
         one_to_many_fields = [
@@ -60,14 +57,13 @@ class Command(DumperBaseCommand):
             key=lambda path: path.stem if any(
                 name in path.stem or path.parent.match(name)
                 for name in one_to_many_fields
-            ) else path.as_posix()
-        )
+            ) else path.as_posix())
 
         for fixture_path in fixtures:
             self.loaddata(fixture_path)
 
     def load_country_self_reference(self, name):
-        with self.open_fixture("self/{}".format(name), 'r') as fixture:
+        with self.open_fixture('self/{}'.format(name), 'r') as fixture:
             for data in fixture.read():
                 country = models.Country.objects.get(cca2=data.object.pk)
                 getattr(country, name).add(*data.m2m_data[name])

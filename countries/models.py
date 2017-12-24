@@ -185,7 +185,7 @@ class CountryName(models.Model):
         verbose_name_plural = _('country names')
 
     def __str__(self):
-        return "{self.country} ({self.language}): {self.common}"\
+        return '{self.country} ({self.language}): {self.common}'\
             .format(self=self)
 
 
@@ -242,7 +242,7 @@ class Division(models.Model):
     poly = models.PolygonField(null=True)
 
     def __str__(self):
-        return "{self.country}: {self.code}".format(self=self)
+        return '{self.country}: {self.code}'.format(self=self)
 
     class Meta:
         ordering = ('country', 'code')
@@ -382,5 +382,5 @@ class Translation(models.Model):
         verbose_name_plural = _('translations')
 
     def __str__(self):
-        return "{self.content} ({self.locale}): {self.text}"\
+        return '{self.content} ({self.locale}): {self.text}'\
             .format(self=self)

@@ -23,10 +23,9 @@ class ManagersTests(TestCase):
         language = factories.LanguageFactory()
         country = factories.CountryFactory()
 
-        locale_code = "{language.cla2}_{country.cca2}".format(
+        locale_code = '{language.cla2}_{country.cca2}'.format(
             language=language,
-            country=country
-        )
+            country=country)
 
         locale = models.Locale.objects.create_locale(code=locale_code)
 

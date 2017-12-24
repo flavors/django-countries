@@ -26,7 +26,7 @@ class TextIOWrapper(object):
 
     def read(self):
         if self.is_fake:
-            return list()
+            return []
         return serializers.deserialize(self.format, self._file.read())
 
     def write(self, queryset, **kwargs):
@@ -36,7 +36,7 @@ class TextIOWrapper(object):
 
 
 class DumperBaseCommand(BaseCommand):
-    exclude_fixtures = tuple()
+    exclude_fixtures = ()
 
     def __init__(self, *args, **kwargs):
         self._rootdir = Path(__file__).parents[2] / 'fixtures'
@@ -58,11 +58,9 @@ class DumperBaseCommand(BaseCommand):
             path=path,
             mode=mode,
             format='json',
-            is_fake=self.is_excluded(path)
-        )
+            is_fake=self.is_excluded(path))
 
     def is_excluded(self, path):
         return next((
             True for pattern in self.exclude_fixtures
-            if path.match(pattern)), False
-        )
+            if path.match(pattern)), False)
