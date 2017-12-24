@@ -1,8 +1,7 @@
 from django.contrib.admin.sites import AdminSite
 from django.test import TestCase
 
-from countries import admin
-from countries import models
+from countries import admin, models
 
 
 class MockRequest:

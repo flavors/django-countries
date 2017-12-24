@@ -1,9 +1,9 @@
 import string
 
+from django.contrib.contenttypes.models import ContentType
+
 import factory
 import factory.fuzzy
-
-from django.contrib.contenttypes.models import ContentType
 
 
 class FuzzyCode(factory.fuzzy.FuzzyText):

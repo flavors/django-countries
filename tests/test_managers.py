@@ -1,7 +1,6 @@
 from django.test import TestCase
-from countries import models
 
-from countries import factories
+from countries import factories, models
 
 
 class ManagersTests(TestCase):

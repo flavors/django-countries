@@ -1,6 +1,5 @@
 from .shortcuts import get_babel, get_model
 
-
 __all__ = ['load_babel', 'load_translations']
 
 

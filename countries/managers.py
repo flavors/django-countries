@@ -5,7 +5,6 @@ from django.db import models
 from .loaddata import load_babel
 from .shortcuts import get_model
 
-
 __all__ = ['LocaleManager']
 
 

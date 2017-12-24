@@ -3,7 +3,6 @@ from pathlib import Path
 from django.core import serializers
 from django.core.management.base import BaseCommand
 
-
 __all__ = ['DumperBaseCommand']
 
 

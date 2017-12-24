@@ -1,18 +1,16 @@
 import datetime
-import pytz
 
 from django.contrib.contenttypes import fields as generic_fields
 from django.contrib.contenttypes.models import ContentType
-
 from django.contrib.gis.db import models
 from django.contrib.postgres import fields as pg_fields
-
 from django.core.validators import RegexValidator
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
-from . import fields
-from . import managers
+import pytz
+
+from . import fields, managers
 
 
 class Continent(models.Model):
@@ -280,10 +278,7 @@ class Language(models.Model):
 
 
 class Locale(models.Model):
-    code = models.CharField(
-        _('code'),
-        max_length=16,
-        primary_key=True)
+    code = models.CharField(_('code'), max_length=16, primary_key=True)
 
     language = models.ForeignKey(
         'Language',
@@ -332,10 +327,7 @@ class Locale(models.Model):
 
 
 class Timezone(models.Model):
-    name = models.CharField(
-        _('name'),
-        max_length=128,
-        primary_key=True)
+    name = models.CharField(_('name'), max_length=128, primary_key=True)
 
     class Meta:
         ordering = ('name',)
