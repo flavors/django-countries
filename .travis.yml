@@ -1,5 +1,4 @@
 language: python
-dist: trusty
 
 python:
   - '3.5'
@@ -12,15 +11,10 @@ addons:
     packages:
       - postgresql-9.6-postgis-2.3
 
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -y gdal-bin
-
 install:
   - pip install tox tox-travis
 
 before_script:
-  - psql -U postgres -c 'CREATE EXTENSION postgis'
   - psql -U postgres -c 'CREATE DATABASE test;'
 
 script:
