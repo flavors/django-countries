@@ -24,9 +24,9 @@ setup(
     'for internationalization and localization purposes.',
     long_description='\n\n'.join(get_long_description()),
     author='mongkok',
-    author_email='dani.pyc@gmail.com',
+    author_email='domake.io@gmail.com',
     maintainer='mongkok',
-    url='https://github.com/flavors/countries/',
+    url='https://github.com/flavors/django-countries/',
     packages=find_packages(exclude=['tests*']),
     install_requires=[
         'Django>=1.9',

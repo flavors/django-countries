@@ -22,7 +22,7 @@ Install last stable version from pypi.
 
     pip install django-countries-flavor
 
-Add ``countries`` to your INSTALLED_APPS setting.
+Add ``countries`` to your *INSTALLED_APPS* setting.
 
 .. code:: python
 
@@ -78,11 +78,11 @@ Credits
 .. |Wheel| image:: https://img.shields.io/pypi/wheel/django-countries-flavor.svg
    :target: https://pypi.python.org/pypi/django-countries-flavor
 
-.. |Build Status| image:: https://travis-ci.org/flavors/countries.svg?branch=master
-   :target: https://travis-ci.org/flavors/countries
+.. |Build Status| image:: https://travis-ci.org/flavors/django-countries.svg?branch=master
+   :target: https://travis-ci.org/flavors/django-countries
 
-.. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/countries.svg
-   :target: https://codecov.io/gh/flavors/countries
+.. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/django-countries.svg
+   :target: https://codecov.io/gh/flavors/django-countries
 
-.. |Code Climate| image:: https://codeclimate.com/github/flavors/countries/badges/gpa.svg
-   :target: https://codeclimate.com/github/flavors/countries
+.. |Code Climate| image:: https://codeclimate.com/github/flavors/django-countries/badges/gpa.svg
+   :target: https://codeclimate.com/github/flavors/django-countries
