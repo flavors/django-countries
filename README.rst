@@ -84,5 +84,5 @@ Credits
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/django-countries.svg
    :target: https://codecov.io/gh/flavors/django-countries
 
-.. |Code Climate| image:: https://codeclimate.com/github/flavors/django-countries/badges/gpa.svg
+.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/1d36caa7d66dd4af9c06/maintainability
    :target: https://codeclimate.com/github/flavors/django-countries
