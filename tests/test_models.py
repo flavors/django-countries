@@ -38,9 +38,3 @@ class ModelsTests(TestCase):
     def test_models_timezone_str(self):
         timezone = factories.TimezoneFactory()
         self.assertEqual(str(timezone), timezone.name)
-
-    def test_models_translation_str(self):
-        translation = factories.TranslationFactory()
-        # Django 1.9 compatible assert  "None (<locale>): text"
-        self.assertTrue(
-            str(translation).strip().endswith(str(translation.text)))

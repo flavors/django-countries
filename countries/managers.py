@@ -2,7 +2,6 @@ import re
 
 from django.db import models
 
-from .loaddata import load_babel
 from .shortcuts import get_model
 
 __all__ = ['LocaleManager']
@@ -24,10 +23,6 @@ class BaseLocaleManager(models.Manager):
             country = None
 
         return self.create(code=code, language=language, country=country)
-
-    def load_babel(self, translations=False):
-        for obj in self.all():
-            load_babel(locale=obj, translations=translations)
 
 
 class LocaleQuerySet(models.QuerySet):

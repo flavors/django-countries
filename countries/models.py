@@ -1,7 +1,5 @@
 import datetime
 
-from django.contrib.contenttypes import fields as generic_fields
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.gis.db import models
 from django.contrib.postgres import fields as pg_fields
 from django.core.validators import RegexValidator
@@ -147,8 +145,6 @@ class Country(models.Model):
         'Timezone',
         verbose_name=_('timezones'))
 
-    translations = generic_fields.GenericRelation('Translation')
-
     class Meta:
         ordering = ('cca2',)
         verbose_name = _('country')
@@ -213,8 +209,6 @@ class Currency(models.Model):
         null=True,
         verbose_name=_('unicode hex'))
 
-    translations = generic_fields.GenericRelation('Translation')
-
     class Meta:
         ordering = ('code',)
         verbose_name = _('currency')
@@ -266,8 +260,6 @@ class Language(models.Model):
         length=3,
         regex=r'[a-z]')
 
-    translations = generic_fields.GenericRelation('Translation')
-
     class Meta:
         ordering = ('cla3',)
         verbose_name = _('language')
@@ -294,8 +286,6 @@ class Locale(models.Model):
         related_name='locales')
 
     data = pg_fields.JSONField(null=True)
-
-    translations = generic_fields.GenericRelation('Translation')
     objects = managers.LocaleManager()
 
     class Meta:
@@ -352,35 +342,3 @@ class Timezone(models.Model):
     @property
     def pytz(self):
         return pytz.timezone(self.name)
-
-
-class Translation(models.Model):
-    content_type = models.ForeignKey(
-        ContentType,
-        on_delete=models.CASCADE,
-        verbose_name=_('content type'))
-
-    object_id = models.CharField(
-        db_index=True,
-        max_length=64,
-        verbose_name=_('content ID'))
-
-    content = generic_fields.GenericForeignKey('content_type', 'object_id')
-
-    locale = models.ForeignKey(
-        'Locale',
-        on_delete=models.CASCADE,
-        related_name='translations',
-        verbose_name=_('locale'))
-
-    text = models.CharField(_('text'), max_length=128)
-
-    class Meta:
-        ordering = ('content_type', 'object_id', 'locale')
-        unique_together = ('content_type', 'object_id', 'locale')
-        verbose_name = _('translation')
-        verbose_name_plural = _('translations')
-
-    def __str__(self):
-        return '{self.content} ({self.locale}): {self.text}'\
-            .format(self=self)

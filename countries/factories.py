@@ -1,7 +1,5 @@
 import string
 
-from django.contrib.contenttypes.models import ContentType
-
 import factory
 import factory.fuzzy
 
@@ -95,20 +93,3 @@ class CountryNameFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = 'countries.CountryName'
         django_get_or_create = ('country', 'language')
-
-
-class TranslationFactory(factory.django.DjangoModelFactory):
-    text = factory.fuzzy.FuzzyText(length=32)
-    locale = factory.SubFactory(LocaleFactory)
-
-    content_type = factory.LazyAttribute(
-        lambda obj: ContentType.objects.get_for_model(obj.content),
-    )
-
-    object_id = factory.SelfAttribute('content.cca2')
-    content = factory.SubFactory(CountryFactory)
-
-    class Meta:
-        model = 'countries.Translation'
-        exclude = ('content',)
-        django_get_or_create = ('locale', 'content_type', 'object_id')

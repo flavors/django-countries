@@ -47,7 +47,3 @@ class AdminTests(TestCase):
     def test_admin_timezone(self):
         model_admin = admin.TimezoneAdmin(models.Timezone, self.site)
         self.assertIn('name', model_admin.get_fields(request))
-
-    def test_admin_translation(self):
-        model_admin = admin.TranslationAdmin(models.Translation, self.site)
-        self.assertIn('locale', model_admin.get_fields(request))

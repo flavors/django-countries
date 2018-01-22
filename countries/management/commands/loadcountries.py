@@ -8,21 +8,6 @@ from ._base import DumperBaseCommand
 class Command(DumperBaseCommand):
     help = 'Load data'
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            '--babel', '-b',
-            dest='babel',
-            action='store_true',
-            default=False,
-            help='Load babel data.')
-
-        parser.add_argument(
-            '--translations', '-t',
-            dest='translations',
-            action='store_true',
-            default=False,
-            help='Load translations data.')
-
     def handle(self, **options):
         self.verbosity = options['verbosity']
 
@@ -30,9 +15,6 @@ class Command(DumperBaseCommand):
 
         for field in get_self_reference_fields(models.Country):
             self.load_country_self_reference(field.name)
-
-        if options['babel']:
-            models.Locale.objects.load_babel(options['translations'])
 
     def loaddata(self, fixture_path):
         if not self.is_excluded(fixture_path):
