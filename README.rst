@@ -1,9 +1,14 @@
 Django Countries Flavor
 =======================
 
-|Docs| |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
+|Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
-A Django application that provides a data collection for internationalization and localization purposes.
+A Django application that provides a **data collection** for **internationalization** and **localization** purposes.
+
+Full **documentation** for the project is available at `docs`_.
+
+.. _docs: http://django-countries-flavor.readthedocs.io/en/latest/?badge=latest
+
 
 Dependencies
 ------------
@@ -22,7 +27,8 @@ Install last stable version from pypi.
 
     pip install django-countries-flavor
 
-Add ``countries`` to your *INSTALLED_APPS* setting.
+
+Add ``countries`` to your *INSTALLED_APPS* settings:
 
 .. code:: python
 
@@ -32,7 +38,7 @@ Add ``countries`` to your *INSTALLED_APPS* setting.
     ]
 
 
-Apply migrations.
+Apply **migrations**:
 
 .. code:: python
 
@@ -42,7 +48,7 @@ Apply migrations.
 Load data
 ---------
 
-The ``loadcountries`` management command loads all `fixtures <countries/fixtures>`__ into the database.
+The ``loadcountries`` management command read all `fixtures <countries/fixtures>`__ and re-loaded into the database:
 
 .. code:: sh
 
@@ -67,10 +73,6 @@ Credits
 * Currency symbols: `hexorx/currencies <https://github.com/hexorx/currencies>`__
 * Divisions and extra data: `rinvex/country <https://github.com/rinvex/country>`__
 * Timezones: `antonioribeiro/countries <https://github.com/antonioribeiro/countries>`__
-
-
-.. |Docs| image:: https://readthedocs.org/projects/django-countries-flavor/badge/?version=latest
-   :target: http://django-countries-flavor.readthedocs.io/en/latest/?badge=latest
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/django-countries-flavor.svg
    :target: https://pypi.python.org/pypi/django-countries-flavor
