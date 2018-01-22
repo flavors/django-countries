@@ -7,7 +7,7 @@ from countries import models
 class CommandsTests(TestCase):
 
     def test_command_load_and_dumpcountries(self):
-        call_command('loadcountries', babel=True, verbosity=0)
+        call_command('loadcountries', verbosity=0)
 
         self.assertTrue(models.Country.objects.exists())
         self.assertTrue(models.CountryName.objects.exists())
