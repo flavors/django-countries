@@ -13,8 +13,8 @@ Full **documentation** for the project is available at `docs`_.
 Dependencies
 ------------
 
-* Python ≥ 3.5
-* Django ≥ 1.9
+* Python ≥ 3.4
+* Django ≥ 1.11
 * PostGIS database (PostgreSQL ≥ 9.4)
 
 
