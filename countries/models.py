@@ -285,7 +285,6 @@ class Locale(models.Model):
         verbose_name=_('country'),
         related_name='locales')
 
-    data = pg_fields.JSONField(null=True)
     objects = managers.LocaleManager()
 
     class Meta:
@@ -295,19 +294,6 @@ class Locale(models.Model):
 
     def __str__(self):
         return self.code
-
-    def __dir__(self):
-        return super().__dir__() + list(self.data.keys())
-
-    def __getattribute__(self, attr):
-        try:
-            return super().__getattribute__(attr)
-        except AttributeError:
-            if not attr.startswith('_') and\
-                    self.data is not None and\
-                    attr in self.data:
-                return self.data[attr]
-            raise
 
     @property
     def short_code(self):
