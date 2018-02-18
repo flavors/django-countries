@@ -58,7 +58,7 @@ class Country(models.Model):
         verbose_name=_('continent'))
 
     location = models.PointField(null=True)
-    mpoly = models.MultiPolygonField(null=True)
+    outlines = models.MultiPolygonField(null=True)
 
     region = models.CharField(_('region'), max_length=64)
     region_code = fields.CodeISOField(
@@ -233,7 +233,7 @@ class Division(models.Model):
         verbose_name=_('alternative names'))
 
     location = models.PointField(null=True)
-    poly = models.PolygonField(null=True)
+    bbox = models.PolygonField(null=True)
 
     def __str__(self):
         return '{self.country}: {self.code}'.format(self=self)
