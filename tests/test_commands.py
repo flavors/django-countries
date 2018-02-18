@@ -16,5 +16,3 @@ class CommandsTests(TestCase):
         self.assertTrue(models.Language.objects.exists())
         self.assertTrue(models.Locale.objects.exists())
         self.assertTrue(models.Timezone.objects.exists())
-
-        call_command('dumpcountries', verbosity=0)
