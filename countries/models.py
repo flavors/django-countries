@@ -135,14 +135,17 @@ class Country(models.Model):
 
     currencies = models.ManyToManyField(
         'Currency',
+        related_name='countries',
         verbose_name=_('currencies'))
 
     languages = models.ManyToManyField(
         'Language',
+        related_name='countries',
         verbose_name=_('official languages'))
 
     timezones = models.ManyToManyField(
         'Timezone',
+        related_name='countries',
         verbose_name=_('timezones'))
 
     class Meta:
@@ -162,8 +165,8 @@ class CountryName(models.Model):
     country = models.ForeignKey(
         'Country',
         on_delete=models.CASCADE,
-        verbose_name=_('country'),
-        related_name='names')
+        related_name='translations',
+        verbose_name=_('country'))
 
     language = models.ForeignKey(
         'Language',
