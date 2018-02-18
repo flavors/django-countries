@@ -1,6 +1,6 @@
 import string
 
-import factory
+import factory.fuzzy
 
 
 class FuzzyCode(factory.fuzzy.FuzzyText):
